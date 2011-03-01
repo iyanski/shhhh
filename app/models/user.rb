@@ -8,14 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   acts_as_extjs_store(
-    :include => [
-      "id",
-      "email",
-      "contact_number",
-      "company_name",
-      "is_active",
-      "color"]
-    ,
+    :include => ["id", "email", "contact_number", "company_name", "is_active", "color"],
     :filters => {
       :is_active => lambda{|bool| bool == 1 ? "Yes" : "No"},
       :created_at => lambda{|at| at.to_s(:timezone) },
