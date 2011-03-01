@@ -1,0 +1,10 @@
+.application-header {
+    background-image: url(/images/greybackground.jpg);
+    line-height: 30px;
+    font-size: 13px;
+    font: tahoma,arial,helvetica,sans-serif
+}
+
+.application-header .x-panel-header-text{
+    color: #99BBE8;
+}

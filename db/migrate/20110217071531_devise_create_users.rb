@@ -9,7 +9,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.confirmable
       # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
       # t.token_authenticatable
-      t.string    :name,  :limit   => 100, :null => false
       t.string    :company_name
       t.string    :contact_number
       t.integer   :is_active, :default => 1

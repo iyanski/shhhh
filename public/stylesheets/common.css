@@ -47,6 +47,15 @@ body {
 #header h1 {
 	margin: 0;
 }
+#body_content h1{
+	color: #ccc;
+	font-size: 18px;
+	font-size: 16px;
+	color: #e17b4e;
+	margin-right: 10px;
+	padding: 0px;
+	margin-top: 0px;
+}
 #drew_logo {
     height: 163px;
     width: 116px;

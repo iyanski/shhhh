@@ -17,8 +17,8 @@
 <body>
 	<div id="container">
 	  <div id="davheader">
-	    <div id="drew_logo"><a href="index.php"><img src="images/drew_logo.gif" alt="Drew Altizer" width="116" height="163" border="0" /></a></div>
-	    <div id="head_nav"> <a href="events.php" id="mn1"><span>Events</span></a><a href="videos.php" id="mn5"><span>Videos</span></a> <a href="archives.php" id="mn2"><span>Archives</span></a> <a href="contact.php" id="mn3"><span>Contact</span></a> <a href="about.php" id="mn4"><span>About</span></a> </div>
+	    <div id="drew_logo"><a href="/"><img src="/images/drew_logo.gif" alt="Drew Altizer" width="116" height="163" border="0" /></a></div>
+	    <div id="head_nav"> <a href="/" id="mn1"><span>Events</span></a><a href="/videos" id="mn5"><span>Videos</span></a> <a href="/archives" id="mn2"><span>Archives</span></a> <a href="/home/contact" id="mn3"><span>Contact</span></a> <a href="/home/about" id="mn4"><span>About</span></a> </div>
 	    <div class="breaker"></div>
 	  </div>
 	  <div id="spacer"></div>
@@ -33,7 +33,14 @@
 		<%= render 'shared/sidepanel' %>
 	  </div>
 	  <div id="davfooter">
-	    <div class="davfooter_copy" style="padding-top:7px;padding-bottom:3px"><a href="privacy.php">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.php">Terms of Use</a> &nbsp;|&nbsp; <a href="contact.php">Contact Us</a></div>
+	    <div class="davfooter_copy" style="padding-top:7px;padding-bottom:3px"><a href="/home/privacy">Privacy Policy</a> &nbsp;|&nbsp; <a href="/home/terms">Terms of Use</a> &nbsp;|&nbsp; <a href="/home/contact">Contact Us</a> &nbsp;|&nbsp; 
+			<% if user_signed_in? %>
+			  <%= link_to('Logout', destroy_user_session_path) %>
+			<% else %>
+			  <%= link_to('Login', new_user_session_path) %> &nbsp;|&nbsp; 
+			  <%= link_to('Register', "/users/sign_up")  %>
+			<% end %>
+		</div>
 	    <div class="davfooter_copy">
 			<script type="text/javascript">
 			<!--

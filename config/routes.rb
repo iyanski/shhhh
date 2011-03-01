@@ -53,6 +53,40 @@ Drewaltizer::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => "events#index"
+  namespace :api do
+    resources :events do
+      collection do
+        get :list
+        post :list
+        get :buckets
+        post :buckets
+      end
+    end
+    
+    resources :users do
+      collection do
+        get :list
+        post :list
+      end
+    end
+    
+    resources :session do
+      collection do
+        get :info
+      end
+    end
+  end
+  resources :events
+  resources :archives
+  resources :videos
+  resources :home do
+    collection do
+      get 'about'
+      get 'contact'
+      get 'terms'
+      get 'privacy'
+    end
+  end
 
   # See how all your routes lay out with "rake routes"
 

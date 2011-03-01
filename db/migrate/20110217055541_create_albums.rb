@@ -4,7 +4,7 @@ class CreateAlbums < ActiveRecord::Migration
       t.string      :name,      :limit   => 30, :null => false
       t.integer     :event_id
       t.integer     :order
-      t.string      :color      :limit   => 7, :default => 'red'
+      t.string      :color,      :limit   => 7, :default => 'red'
       t.integer     :user_id
       t.boolean     :is_featured
       t.boolean     :is_active
