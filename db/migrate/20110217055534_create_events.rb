@@ -7,9 +7,9 @@ class CreateEvents < ActiveRecord::Migration
       t.integer     :photographer_id
       t.string      :thumbnail
       t.text        :details
-      t.boolean     :is_public, :default => 1
-      t.boolean     :is_featured, :default => 0
-      t.boolean     :is_active, :default => 1
+      t.integer     :is_public, :default => 1, :limit => 1
+      t.integer     :is_featured, :default => 0, :limit => 1
+      t.integer     :is_active, :default => 1, :limit => 1
       t.integer     :booking_id
       t.timestamps
     end

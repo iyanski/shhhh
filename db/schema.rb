@@ -17,9 +17,8 @@ ActiveRecord::Schema.define(:version => 20110217082750) do
     t.integer  "event_id"
     t.integer  "order"
     t.string   "color",       :limit => 7,  :default => "red"
-    t.integer  "user_id"
-    t.boolean  "is_featured"
-    t.boolean  "is_active"
+    t.integer  "is_featured", :limit => 1
+    t.integer  "is_active",   :limit => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20110217082750) do
     t.boolean  "with_video_services"
     t.boolean  "for_web_submissions"
     t.text     "web_submissions_notes"
-    t.boolean  "for_rush_delivery"
+    t.integer  "for_rush_delivery",       :limit => 1
     t.string   "billing_firstname"
     t.string   "billing_lastname"
     t.string   "billing_email"
@@ -67,8 +66,8 @@ ActiveRecord::Schema.define(:version => 20110217082750) do
     t.string   "contract_signer_name"
     t.string   "contract_signer_address"
     t.string   "contract_signer_email"
-    t.boolean  "is_active"
-    t.boolean  "is_editable_by_client"
+    t.integer  "is_active",               :limit => 1, :default => 0
+    t.integer  "is_editable_by_client",   :limit => 1, :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -98,15 +97,15 @@ ActiveRecord::Schema.define(:version => 20110217082750) do
   add_index "customers", ["reset_password_token"], :name => "index_customers_on_reset_password_token", :unique => true
 
   create_table "events", :force => true do |t|
-    t.string   "name",                               :null => false
+    t.string   "name",                                        :null => false
     t.string   "folder"
     t.date     "event_date"
     t.integer  "photographer_id"
     t.string   "thumbnail"
     t.text     "details"
-    t.boolean  "is_public",       :default => true
-    t.boolean  "is_featured",     :default => false
-    t.boolean  "is_active",       :default => true
+    t.integer  "is_public",       :limit => 1, :default => 1
+    t.integer  "is_featured",     :limit => 1, :default => 0
+    t.integer  "is_active",       :limit => 1, :default => 1
     t.integer  "booking_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -178,7 +177,7 @@ ActiveRecord::Schema.define(:version => 20110217082750) do
     t.string   "file_name"
     t.string   "file_type",  :limit => 4
     t.string   "caption"
-    t.boolean  "is_active",               :default => true
+    t.integer  "is_active",  :limit => 1, :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end

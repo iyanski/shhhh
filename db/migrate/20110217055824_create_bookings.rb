@@ -18,7 +18,7 @@ class CreateBookings < ActiveRecord::Migration
       t.boolean   :with_video_services         
       t.boolean   :for_web_submissions        
       t.text      :web_submissions_notes  
-      t.boolean   :for_rush_delivery  
+      t.integer   :for_rush_delivery , :limit => 1 
       t.string    :billing_firstname      
       t.string    :billing_lastname       
       t.string    :billing_email          
@@ -31,8 +31,8 @@ class CreateBookings < ActiveRecord::Migration
       t.string    :contract_signer_name   
       t.string    :contract_signer_address
       t.string    :contract_signer_email  
-      t.boolean   :is_active          
-      t.boolean   :is_editable_by_client
+      t.integer   :is_active, :limit => 1, :default => 0
+      t.integer   :is_editable_by_client, :limit => 1, :default => 0
       t.timestamps
     end
   end

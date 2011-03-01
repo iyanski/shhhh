@@ -5,7 +5,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.string          :file_name
       t.string          :file_type,   :limit   => 4
       t.string          :caption
-      t.boolean         :is_active,   :default => 1
+      t.integer         :is_active,   :default => 1, :limit   => 1
       t.timestamps
     end
   end
