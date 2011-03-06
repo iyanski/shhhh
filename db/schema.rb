@@ -10,11 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110217082750) do
+ActiveRecord::Schema.define(:version => 20110306061636) do
 
   create_table "albums", :force => true do |t|
     t.string   "name",        :limit => 30,                    :null => false
-    t.integer  "event_id"
+    t.integer  "post_id"
     t.integer  "order"
     t.string   "color",       :limit => 7,  :default => "red"
     t.integer  "is_featured", :limit => 1
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20110217082750) do
   add_index "customers", ["reset_password_token"], :name => "index_customers_on_reset_password_token", :unique => true
 
   create_table "events", :force => true do |t|
-    t.string   "name",                                        :null => false
+    t.string   "name"
     t.string   "folder"
     t.date     "event_date"
     t.integer  "photographer_id"
@@ -130,6 +130,15 @@ ActiveRecord::Schema.define(:version => 20110217082750) do
     t.datetime "updated_at"
   end
 
+  create_table "operations", :force => true do |t|
+    t.integer  "ref_id"
+    t.string   "action"
+    t.integer  "status",      :default => 0
+    t.datetime "finished_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "order_details", :force => true do |t|
     t.integer  "order_id"
     t.integer  "photo_id"
@@ -143,7 +152,7 @@ ActiveRecord::Schema.define(:version => 20110217082750) do
 
   create_table "orders", :force => true do |t|
     t.integer  "customer_id",        :null => false
-    t.integer  "event_id",           :null => false
+    t.integer  "post_id",            :null => false
     t.float    "total"
     t.float    "decimal"
     t.integer  "coupon_id"
@@ -173,11 +182,27 @@ ActiveRecord::Schema.define(:version => 20110217082750) do
   end
 
   create_table "photos", :force => true do |t|
-    t.integer  "event_id"
+    t.integer  "post_id"
+    t.integer  "album_id"
     t.string   "file_name"
     t.string   "file_type",  :limit => 4
     t.string   "caption"
     t.integer  "is_active",  :limit => 1, :default => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "name",                                        :null => false
+    t.string   "folder"
+    t.date     "event_date"
+    t.integer  "photographer_id"
+    t.string   "thumbnail"
+    t.text     "details"
+    t.integer  "is_public",       :limit => 1, :default => 1
+    t.integer  "is_featured",     :limit => 1, :default => 0
+    t.integer  "is_active",       :limit => 1, :default => 1
+    t.integer  "booking_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

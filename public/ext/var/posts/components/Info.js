@@ -22,7 +22,6 @@ Extriajs.posts.components.Info = Ext.extend(Ext.Panel,{
 		
 		Ext.apply(this, Ext.applyIf(this.initialConfig, config));
         Extriajs.posts.components.Info.superclass.initComponent.apply(this);
-		me.operation = 'add';
 	},
 	_loadChildData: function(){
 		this.ownerCt.getLayout().setActiveItem(1);

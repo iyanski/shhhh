@@ -32,3 +32,5 @@ gem 'mysql2'
 
 gem 'devise'
 gem 'will_paginate'
+gem 'resque'
+gem 'SystemTimer'

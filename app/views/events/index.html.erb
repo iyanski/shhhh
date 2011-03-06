@@ -1,2 +1,4 @@
 <h1><%= @page_title %></h1>
-<%= @events.inspect%>
+<% @events.each do |event| %>
+	<%= link_to event.name, :controller=>"events", :action=>"show", :id=>event %>
+<% end %>

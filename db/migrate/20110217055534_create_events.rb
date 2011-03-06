@@ -1,7 +1,7 @@
 class CreateEvents < ActiveRecord::Migration
   def self.up
     create_table :events do |t|
-      t.string      :name, :null => false
+      t.string      :name
       t.string      :folder
       t.date        :event_date
       t.integer     :photographer_id

@@ -1,0 +1,4 @@
+<h1><%= @page_title %></h1>
+<% @albums.each do |album| %>
+	<%= link_to album.name, album_path %>
+<% end %>

@@ -2,7 +2,7 @@ Ext.namespace('Extriajs.posts.components');
 Extriajs.posts.components.List = Ext.extend(Ext.grid.GridPanel, {
     initComponent: function() {
 		var me = this;
-        var store = new Extriajs.data.Events();
+        var store = new Extriajs.data.Posts();
         var config = {
             border: false,
 			loadMask: true,
@@ -11,7 +11,9 @@ Extriajs.posts.components.List = Ext.extend(Ext.grid.GridPanel, {
 			autoScroll: true,
             columns: [
 				{id: 'id', header: 'ID', width: 50, sortable: false, dataIndex: 'id'},
-				{id: 'title', header: 'Title', width: '50%', sortable: true, dataIndex: 'name'},
+				{id: 'title', header: 'Title', sortable: true, dataIndex: 'name'},
+				{id: 'event_date', header: 'Event Date', width: 200, sortable: false, dataIndex: 'event_date'},
+				{id: 'is_public', header: 'Public', width: 200, sortable: false, dataIndex: 'is_public'},
 				{id: 'created_at', header: 'Created', width: 200, sortable: false, dataIndex: 'created_at'}
             ],
 			tbar: [{
@@ -90,10 +92,24 @@ Extriajs.posts.components.List = Ext.extend(Ext.grid.GridPanel, {
 						me.toggleActivated(_.getStore().getAt(idx).id, active());
 					}
 				},{
-					text: 'Modify',
+					text: 'modify',
 					icon: icons.silk('calendar_edit'),
 					handler: function(){
 						me.editEvent(_.getStore().getAt(idx).id);
+					}
+				},
+				{
+					text: 'synchronize',
+					icon: icons.silk('database_go'),
+					handler: function(){
+						me.doSomething(_.getStore().getAt(idx).id, 'synchronize');
+					}
+				},
+				{
+					text: 'watermark',
+					icon: icons.silk('picture_go'),
+					handler: function(){
+						me.doSomething(_.getStore().getAt(idx).id, 'watermark');
 					}
 				}]
             };
@@ -117,6 +133,20 @@ Extriajs.posts.components.List = Ext.extend(Ext.grid.GridPanel, {
 				if (response.success){
 					me.getStore().reload();
 				}
+			}
+		});
+	},
+	
+	doSomething: function(id, action){
+		var me = this;
+		Ext.Ajax.request({
+			method: 'post',
+			url: '/api/events/' + action + '.json',
+			params: {
+				id: id
+			},
+			success: function(msg){
+				var response = Ext.util.JSON.decode(msg.responseText);
 			}
 		});
 	},

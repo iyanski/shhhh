@@ -18,7 +18,7 @@ Extriajs.posts.components.Photos = Ext.extend(Ext.DataView,{
 		    '<div class="x-clear"></div>'
 		);
 		
-		var store = new Extriajs.data.Buckets();
+		var store = new Extriajs.data.Photos();
 		
 		var config = {
 			cls: 'data-view',

@@ -2,7 +2,7 @@ class CreateAlbums < ActiveRecord::Migration
   def self.up
     create_table :albums do |t|
       t.string      :name,      :limit   => 30, :null => false
-      t.integer     :event_id
+      t.integer     :post_id
       t.integer     :order
       t.string      :color,      :limit   => 7, :default => 'red'
       t.integer     :is_featured, :limit => 1

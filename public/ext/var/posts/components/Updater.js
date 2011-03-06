@@ -4,42 +4,45 @@ Extriajs.posts.components.Updater = Ext.extend(Ext.FormPanel,{
 	initComponent: function(){
 		var me = this;
 		var namer = Extriajs.tools.namer('post');
-		/*
-		var category_store = new Ext.data.Store({    
-		    proxy: new Ext.data.HttpProxy({url: '/api/categories/list.json'}),
+		var buckets = new Ext.data.Store({    
+		    proxy: new Ext.data.HttpProxy({url: '/api/events/buckets.json'}),
 		    reader: new Ext.data.JsonReader({
-		    root: 'categories',
+		    root: 'buckets',
 		    fields: [
-		        {name: 'id'},
 		        {name: 'name'}
 		    ]
 		    })
 		});
 		
-		category_store.load();
-		*/
+		buckets.load();
 		var config = {
 			defaultType: 'textfield',
 			autoScroll: true,
 			frame: true,
-			items: [{
+			items: [
+			new Ext.form.ComboBox({
+				ref: 'folder',
+				name: namer('folder'),
+			    store: buckets,
+				fieldLabel: 'Event Folder',
+			    displayField:'name',
+				editable: false,
+				valueField: 'name',
+			    typeAhead: true,
+			    mode: 'local',
+			    triggerAction: 'all',
+			    selectthisnFocus:true,
+			    anchor: '98%'
+			}),
+			{
 				fieldLabel: 'Name',
 				name: namer('name'),
 				anchor: '98%'
 			},
 			{
-				fieldLabel: 'Event Folder',
-				name: namer('folder'),
-				anchor: '98%'
-			},
-			{
+				xtype: 'datefield',
 				fieldLabel: 'Event Date',
 				name: namer('event_date'),
-				anchor: '98%'
-			},
-			{
-				fieldLabel: 'Photographer',
-				name: namer('photographer_id'),
 				anchor: '98%'
 			},
 			{
@@ -49,21 +52,49 @@ Extriajs.posts.components.Updater = Ext.extend(Ext.FormPanel,{
 				anchor: '98%',
 				height: 150,
 			},
-			{
-				fieldLabel: 'Display Type',
+			new Ext.form.ComboBox({
+				ref: 'display_type',
+				store: new Ext.data.ArrayStore({
+					index: 0,
+				    fields: ['index','label'],
+				    data: [[0,'Public'],
+				           [1,'Private']]
+				}),
+				typeAhead: true,
 				name: namer('is_public'),
-				anchor: '98%'
-			},
-			{
+				lazyRender:true,
+				mode: 'local',
+				hiddenName: 'is_public',
+				valueField: 'index',
+				displayField: 'label',
+				fieldLabel: 'Display type',
+				anchor: '98%',
+				editable: false,
+				allowBlank: false,
+				triggerAction: 'all',
+			    forceSelection: true,
+			    emptyText:'Public?'
+			}),
+			new Ext.form.ComboBox({
 				fieldLabel: 'Featured',
 				name: namer('is_featured'),
-				anchor: '98%'
-			},
-			{
-				fieldLabel: 'Blog URL',
-				name: namer('event_date'),
-				anchor: '98%'
-			}],
+				triggerAction: 'all',
+				editable: false,
+				lazyRender:true,
+				mode: 'local',
+				store: new Ext.data.ArrayStore({
+				    fields: [
+				        'index',
+						'label'
+				    ],
+				    data: [[0,'Featured'], [1,'Not Featured']],
+				}),
+				hiddenName: 'featured',
+				valueField: 'index',
+				displayField: 'label',
+				anchor: '98%',
+				emptyText: 'Featured?'
+			})],
 			buttons: [{
 				text: 'Save',
 				icon: icons.silk('disk'),
@@ -85,6 +116,7 @@ Extriajs.posts.components.Updater = Ext.extend(Ext.FormPanel,{
 		
 		Ext.apply(this, Ext.applyIf(this.initialConfig, config));
         Extriajs.posts.components.Updater.superclass.initComponent.apply(this);
+		this.operation = 'add';
 		this.addEvents('loadData');
 		this.on('loadData', function(data){
 			me.loadData(data.idx);
@@ -100,13 +132,15 @@ Extriajs.posts.components.Updater = Ext.extend(Ext.FormPanel,{
             	msg: '{0}...'.format('Loading')
         	});
 		}
+		me.operation = "update";
+		me.item_id = id;
 		me.mask.show();
 		Ext.Ajax.request({
 			method: 'GET',
 			url: '/api/events/' + id + '.json',
 			success: function(msg){
 				var response = Ext.util.JSON.decode(msg.responseText);
-				Ext.forEach(response.post, function (value, key) {
+				Ext.forEach(response.data.post, function (value, key) {
 		            config[namer(key)] = value;
 		        });
 		        me.getForm().setValues(config);
@@ -126,11 +160,11 @@ Extriajs.posts.components.Updater = Ext.extend(Ext.FormPanel,{
             	msg: '{0}...'.format('Loading')
         	});
 		}
-		if(me.ownerCt.operation == "add"){
+		if(me.operation == "add"){
 			var method = 'POST';
-			var url = '/api/events/create.json';
-		}else if(me.ownerCt.operation == "update"){
-			var url = '/api/events/' + me.ownerCt.app_id + '.json';
+			var url = '/api/events.json';
+		}else if(me.operation == "update"){
+			var url = '/api/events/' + me.item_id + '.json';
 			var method = 'PUT';
 		}
 		me.mask.show();
@@ -138,8 +172,8 @@ Extriajs.posts.components.Updater = Ext.extend(Ext.FormPanel,{
 			url: url,
 			method: method,
 			success: function(form, action){
-				Ext.Msg.alert("Success", action.result.message);
-				me.ownerCt.ownerCt.list.store.reload();
+				me.ownerCt.list.store.reload();
+				me.getForm.clear();
 				me.mask.hide();
 			},
 			failure: function(form, action){

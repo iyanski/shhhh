@@ -52,14 +52,21 @@ Drewaltizer::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "events#index"
   namespace :api do
+    resources :albums do
+      collection do
+        get :list
+        post :list
+      end
+    end
     resources :events do
       collection do
         get :list
         post :list
         get :buckets
         post :buckets
+        post :synchronize
+        post :watermark
       end
     end
     
@@ -77,6 +84,8 @@ Drewaltizer::Application.routes.draw do
     end
   end
   resources :events
+  resources :photos
+  resources :albums
   resources :archives
   resources :videos
   resources :home do
@@ -87,7 +96,7 @@ Drewaltizer::Application.routes.draw do
       get 'privacy'
     end
   end
-
+  root :to => "events#index"
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

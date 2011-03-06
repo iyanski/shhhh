@@ -24,5 +24,7 @@ Drewaltizer::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+  config.autoload_paths += %W( #{Rails.root.to_s}/lib/events)
 end
 

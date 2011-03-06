@@ -1,4 +1,4 @@
 class Booking < ActiveRecord::Base
-  has_one :event
+  has_one :post
   belongs_to  :customer
 end
