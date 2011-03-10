@@ -37,14 +37,25 @@ class Api::EventsController < ApiController
     end
   end
   
-  def show
-    event = Post.find_by_id(params[:id])
+  def edit
+    id = params[:id]
+    post = Post.find_by_id(id)
     respond_to do |format|
-      unless event.nil? 
-        format.json  { ext :data => event }
-      else
-        format.json  { ext :success => false }
-      end
+      format.json { render :json => post }
+    end
+  end
+  
+  def show
+    respond_to do |format|
+      id = params[:id]
+      opts = {}.merge(params.symbolize_keys.slice(:start, :limit, :sort, :dir))
+      format.json {
+        ext(
+          Album.store { 
+            find(:all, opts.merge(:conditions => ['post_id = %s' % id]) ) 
+          }
+        )
+      }
     end
   end
   
@@ -83,9 +94,16 @@ class Api::EventsController < ApiController
   
   def watermark
     post = Post.find_by_id(params[:id])
-    operation = Operation.new
-    operation.ref_id = params[:id]
-    operation.action = "watermark"
+    
+    post.photos.each do |photo|
+      operation = Operation.new
+      operation.ref_id = photo.id
+      operation.action = "watermark"
+      if operation.save!
+        Resque.enqueue(Watermark, operation.id)
+      end
+    end
+    
     respond_to do |format|
       format.json {ext :success => true, :message => post.folder}
     end

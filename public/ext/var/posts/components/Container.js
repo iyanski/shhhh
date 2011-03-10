@@ -24,6 +24,7 @@ Extriajs.posts.components.Container = Ext.extend(Ext.TabPanel, {
 						autoScroll: true,
 		                items: [{
 							ref: 'list',
+							autoScroll: true,
 							xtype: 'extria-posts-list',
 							region: 'center'
 						},

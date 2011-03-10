@@ -55,6 +55,9 @@ Drewaltizer::Application.routes.draw do
   namespace :api do
     resources :albums do
       collection do
+        post :list
+      end
+      member do
         get :list
         post :list
       end

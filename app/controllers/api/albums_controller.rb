@@ -8,7 +8,15 @@ class Api::AlbumsController < ApiController
   
   def show
     respond_to do |format|
-      format.json  { ext Album.store{ find_by_id(params[:id]) } }
+      id = params[:id]
+      opts = {}.merge(params.symbolize_keys.slice(:start, :limit, :sort, :dir))
+      format.json {
+        ext(
+          Photo.store { 
+            find(:all, opts.merge(:conditions => ['album_id = %s' % id]) ) 
+          }
+        )
+      }
     end
   end
 end

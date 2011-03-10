@@ -76,7 +76,7 @@ Extriajs.base.components.Menu = Ext.extend(Ext.Toolbar, {
 			icon: icons.silk('world'),
 			listeners: {
 				click: function(){
-					window.location.href = "/";
+					window.open("/", "site");
 				}
 			}
 		});

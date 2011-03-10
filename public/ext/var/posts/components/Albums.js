@@ -6,7 +6,7 @@ Extriajs.posts.components.Albums = Ext.extend(Ext.DataView,{
 		var tpl = new Ext.XTemplate(
 			'<tpl for=".">',
 		        '<div class="thumb-wrap" id="{id}">',
-				    '<div class="thumb">',
+				    '<div class="thumb" style="background-color: {color}">',
 						'<div><img src="/images/drew_logo.gif"></div>',
 						'<div>{name}</div>',
 					'</div>',
@@ -15,11 +15,8 @@ Extriajs.posts.components.Albums = Ext.extend(Ext.DataView,{
 		    '<div class="x-clear"></div>'
 		);
 		
-		var store = new Extriajs.data.Albums();
-		
 		var config = {
 			cls: 'data-view',
-			store: store,
 			tpl: tpl,
 			loadMask: true,
 			autoHeight:true,
@@ -33,7 +30,6 @@ Extriajs.posts.components.Albums = Ext.extend(Ext.DataView,{
 		
 		Ext.apply(this, Ext.applyIf(this.initialConfig, config));
         Extriajs.posts.components.Albums.superclass.initComponent.apply(this);
-		this.store = store;
 		this.on('contextmenu', function(_, idx, node, e){
             var me = this;
 			var menu = [];
@@ -84,10 +80,12 @@ Extriajs.posts.components.Albums = Ext.extend(Ext.DataView,{
 				xtype: 'panel',
 				closable: true,
 				resizeTabs: true,
+				autoScroll: true,
 				items: [{
 					xtype: 'extria-posts-photos',
 					idx: record.id
-				}]
+				}],
+				bbar: []
 			});
 			this.ownerCt.ownerCt.setActiveTab(tab);
 		});
@@ -100,14 +98,16 @@ Extriajs.posts.components.Albums = Ext.extend(Ext.DataView,{
             	msg: '{0}...'.format('Loading')
         	});
 		}
-		me.store.load({
-			params: {
-				id: id
-			},
+		var store = new Ext.data.JsonStore({
+			url: '/api/events/' + id + '.json',
+			autoLoad: true,
+			fields: ["id", "name", "color"],
+            root: 'album',
 			callback: function(){
 				me.mask.hide();
-			}
+			},
 		});
+		me.store = store;
 		me.idx = id;
 	},
 	

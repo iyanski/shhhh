@@ -116,8 +116,13 @@ Extriajs.posts.components.Updater = Ext.extend(Ext.FormPanel,{
 		
 		Ext.apply(this, Ext.applyIf(this.initialConfig, config));
         Extriajs.posts.components.Updater.superclass.initComponent.apply(this);
+		this.spot = new Ext.ux.Spotlight({
+            easing: 'easeOut',
+            duration: .2
+        });
 		this.operation = 'add';
 		this.addEvents('loadData');
+		this.form = this.getForm();
 		this.on('loadData', function(data){
 			me.loadData(data.idx);
 		});
@@ -137,14 +142,13 @@ Extriajs.posts.components.Updater = Ext.extend(Ext.FormPanel,{
 		me.mask.show();
 		Ext.Ajax.request({
 			method: 'GET',
-			url: '/api/events/' + id + '.json',
+			url: '/api/events/' + id + '/edit.json',
 			success: function(msg){
 				var response = Ext.util.JSON.decode(msg.responseText);
-				Ext.forEach(response.data.post, function (value, key) {
+				Ext.forEach(response.post, function (value, key) {
 		            config[namer(key)] = value;
 		        });
 		        me.getForm().setValues(config);
-				//me.tag.setValue(response.product.tag);
 				me.mask.hide();
 			},
 			failure: function(msg){
@@ -173,8 +177,9 @@ Extriajs.posts.components.Updater = Ext.extend(Ext.FormPanel,{
 			method: method,
 			success: function(form, action){
 				me.ownerCt.list.store.reload();
-				me.getForm.clear();
 				me.mask.hide();
+				me.getForm().reset();
+				Extriajs.tools.Msg.alert(action.result.message);
 			},
 			failure: function(form, action){
 				me.mask.hide();

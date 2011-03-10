@@ -5,12 +5,12 @@ Extriajs.posts.components.Photos = Ext.extend(Ext.DataView,{
 		
 		var tpl = new Ext.XTemplate(
 			'<tpl for=".">',
-		        '<div class="thumb-wrap" id="{name}"><span class="">{name}</span>',
+		        '<div class="thumb-wrap" id="{name}"><span class="">{file_name}</span>',
 				    '<div class="thumb">',
 						'<div><img src="/images/drew_logo.gif"></div>',
 					'</div>',
 					'<div style="width:350px; clear:both;">',
-						'{colors}',
+						'{file_type}',
 					'</div>',
 					'<div style="width:350px; clear:both;"><span class="x-editable">{name}</span></div>',
 				'</div>',
@@ -82,14 +82,11 @@ Extriajs.posts.components.Photos = Ext.extend(Ext.DataView,{
 		this.on('dblclick', function(_, index, node){
 			var record = _.getRecord(node);
 			var tab = this.ownerCt.ownerCt.add({
-				title: record.get('name'),
+				title: record.get('file_name'),
 				xtype: 'panel',
 				closable: true,
 				resizeTabs: true,
-				items: [{
-					xtype: 'extria-posts-photos',
-					idx: record.id
-				}]
+				html: 'Photo'
 			});
 			this.ownerCt.ownerCt.setActiveTab(tab);
 		});
@@ -102,14 +99,16 @@ Extriajs.posts.components.Photos = Ext.extend(Ext.DataView,{
             	msg: '{0}...'.format('Loading')
         	});
 		}
-		me.store.load({
-			params: {
-				id: id
-			},
+		var store = new Ext.data.JsonStore({
+			url: '/api/albums/' + id + '.json',
+			autoLoad: true,
+			fields: ["id", "file_name", "file_type"],
+            root: 'photo',
 			callback: function(){
 				me.mask.hide();
-			}
+			},
 		});
+		me.store = store;
 		me.idx = id;
 	},
 	

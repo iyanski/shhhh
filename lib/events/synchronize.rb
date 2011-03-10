@@ -20,13 +20,3 @@ class Synchronize
     end
   end
 end
-#namespace :synchronize do
-#  desc "Retrieving event photos"
-#  task :photos => :environment do
-#    Dir.chdir("photos/#{ENV['DIRECTORY']}")
-#    dir = Dir.glob("*.jpg")
-#    dir.each do |directory|
-#      puts directory
-#    end
-#  end
-#end
