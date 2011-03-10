@@ -1,9 +1,14 @@
 class Api::EventsController < ApiController
   
+  def index
+    respond_to do |format|
+      format.json  { ext Post.store{ find(:all) } }
+    end
+  end
+  
   def list
     respond_to do |format|
       format.json  { ext Post.store{ find(:all) } }
-      format.html  { ext Post.store{ find(:all) } }
     end
   end
   

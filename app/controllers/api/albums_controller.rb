@@ -9,7 +9,7 @@ class Api::AlbumsController < ApiController
   def show
     respond_to do |format|
       id = params[:id]
-      opts = {}.merge(params.symbolize_keys.slice(:start, :limit, :sort, :dir))
+      opts = {}.merge(params.symbolize_keys.slice(:start, :limit))
       format.json {
         ext(
           Photo.store { 
