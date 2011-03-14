@@ -24,9 +24,26 @@
 	  <div id="spacer"></div>
 	  <div id="body_column1">
 	  	<div id="body_body">
-	      	<div id="body_content">
+
+			<div id="side_panel">
+				<ul>
+					<li>Login</li>
+					<li>Forgot Password</li>
+					<li>Register</li>
+					<li>&nbsp;</li>
+					<li>Frequently Asked Questions</li>
+					<li>Returns and Refunds</li>
+					<li>&nbsp;</li>
+					<li>
+						<%= link_to (image_tag("/images/icons/rss.png", :border=>0), "#")%> 
+						<%= link_to(image_tag("/images/icons/followus.png", :border=>0), "#")%>
+					</li>
+				</ul>
+			</div>
+			<div id="body_content">
 	  			<%= yield %>
 	  		</div>
+			<p id="breaker"></p>
 	  	</div>
 	  </div>
 	  <div id="body_column2">

@@ -1,4 +1,7 @@
 <h1><%= @page_title %></h1>
 <% @events.each do |event| %>
-	<%= link_to event.name, :controller=>"events", :action=>"show", :id=>event %>
+	<div class="thumbnails">
+		<%= link_to (image_tag("/photos/#{event.photos.first.id}") , :controller=>"events", :action=>"show", :id=>event) %>
+		<p><%= event.name %></p>
+	</div>
 <% end %>

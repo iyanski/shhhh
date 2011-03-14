@@ -1,6 +1,13 @@
 <h1><%= @page_title %></h1>
-<ul>
 <% @photos.each do |photo| %>
-	<li><%= photo.file_name%></li>
+	<div class="thumbnails">
+		<div class="photo"><%= link_to (image_tag("/photos/#{photo.id}") , :controller=>"photos", :action=>"show", :id=>photo, :format => "html") %></div>
+		<p><strong><%= photo.file_name%></strong></p>
+		<div>
+			<%= link_to (image_tag("/images/icons/favorites.png", 	:width=> 25, :height=>25, :border=>0), "#")%>
+			<%= link_to (image_tag("/images/icons/facebook.png", 	:width=> 25, :height=>25, :border=>0), "#")%>
+			<%= link_to (image_tag("/images/icons/download.gif", 	:width=> 25, :height=>25, :border=>0), "#")%>
+			<%= link_to (image_tag("/images/icons/cart.gif", 		:width=> 25, :height=>25, :border=>0), "#")%>
+		</div>
+	</div>
 <% end unless @photos.nil? %>
-</ul>

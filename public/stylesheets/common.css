@@ -47,6 +47,14 @@ body {
 #header h1 {
 	margin: 0;
 }
+#body_content{
+	float:left;
+	width: 720px;
+}
+#side_panel{
+	width: 280px;
+	float: right;
+}
 #body_content h1{
 	color: #ccc;
 	font-size: 18px;
@@ -296,4 +304,32 @@ a:active {
 div.sidepanel{
 	float:right;
 	width: 300px;
+}
+
+div.thumbnails{
+	margin: 5px;
+	text-align: center;
+	width: 130px;
+	height: 275px;
+	float:left;
+	border: 1px solid #EEEEEE;
+	padding: 5px 0 5px 0;
+}
+div.photo{
+	width: 130px;
+	height: 190px;
+}
+div.photo img{
+	padding: 1px;
+	border: 1px solid #ccc;
+}
+p#breaker{
+	clear:both;
+}
+div#side_panel ul{
+	margin: 0px;
+	padding: 0px;
+}
+div#side_panel ul li{
+	list-style: none;
 }
