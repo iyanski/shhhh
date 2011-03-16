@@ -10,11 +10,11 @@ class DeviseCreateCustomers < ActiveRecord::Migration
       # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
       # t.token_authenticatable
 
-      t.string        :name,  :limit   => 100, :null => false
+      t.string        :name,  :limit   => 100, :null => true
       t.string        :contact_number
       t.boolean       :is_active, :default => 1
-      t.integer       :billing_information_id, :null => false
-      t.integer       :mailing_information_id, :null => false
+      t.integer       :billing_information_id, :null => true
+      t.integer       :mailing_information_id, :null => true
       t.timestamps
     end
 

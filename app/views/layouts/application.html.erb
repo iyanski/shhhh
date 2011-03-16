@@ -27,9 +27,11 @@
 
 			<div id="side_panel">
 				<ul>
+					<% unless customer_signed_in? %>
 					<li>Login</li>
 					<li>Forgot Password</li>
 					<li>Register</li>
+					<% end %>
 					<li>&nbsp;</li>
 					<li>Frequently Asked Questions</li>
 					<li>Returns and Refunds</li>
@@ -51,11 +53,11 @@
 	  </div>
 	  <div id="davfooter">
 	    <div class="davfooter_copy" style="padding-top:7px;padding-bottom:3px"><a href="/home/privacy">Privacy Policy</a> &nbsp;|&nbsp; <a href="/home/terms">Terms of Use</a> &nbsp;|&nbsp; <a href="/home/contact">Contact Us</a> &nbsp;|&nbsp; 
-			<% if user_signed_in? %>
-			  <%= link_to('Logout', destroy_user_session_path) %>
+			<% if customer_signed_in? %>
+			  <%= link_to('Logout', destroy_customer_session_path) %>
 			<% else %>
-			  <%= link_to('Login', new_user_session_path) %> &nbsp;|&nbsp; 
-			  <%= link_to('Register', "/users/sign_up")  %>
+			  <%= link_to('Login', new_customer_session_path) %> &nbsp;|&nbsp; 
+			  <%= link_to('Register', "/customers/sign_up")  %>
 			<% end %>
 		</div>
 	    <div class="davfooter_copy">

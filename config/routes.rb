@@ -87,6 +87,7 @@ Drewaltizer::Application.routes.draw do
     end
   end
   resources :events
+  resources :favorites
   resources :photos
   resources :albums
   resources :archives
