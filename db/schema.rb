@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110306061636) do
+ActiveRecord::Schema.define(:version => 20110330034641) do
 
   create_table "albums", :force => true do |t|
     t.string   "name",        :limit => 30,                    :null => false
@@ -72,6 +72,22 @@ ActiveRecord::Schema.define(:version => 20110306061636) do
     t.datetime "updated_at"
   end
 
+  create_table "cart_items", :force => true do |t|
+    t.integer  "photo_id"
+    t.integer  "cart_id"
+    t.integer  "paper_size_id"
+    t.integer  "paper_type_id"
+    t.float    "price"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "customers", :force => true do |t|
     t.string   "email",                                 :default => "",   :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "",   :null => false
@@ -84,11 +100,11 @@ ActiveRecord::Schema.define(:version => 20110306061636) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "name",                   :limit => 100,                   :null => false
+    t.string   "name",                   :limit => 100
     t.string   "contact_number"
     t.boolean  "is_active",                             :default => true
-    t.integer  "billing_information_id",                                  :null => false
-    t.integer  "mailing_information_id",                                  :null => false
+    t.integer  "billing_information_id"
+    t.integer  "mailing_information_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

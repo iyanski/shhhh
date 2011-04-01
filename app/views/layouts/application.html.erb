@@ -10,15 +10,22 @@
 	<meta name="pagerank™" content="10"></meta>
 	<meta name="revisit" content="2 days"></meta>
 	<meta name="revisit-after" content="2 days"></meta>
-	<%= stylesheet_link_tag 'common', 'ui/smoothness/jquery-ui-1.7.1.custom.css' %>
-	<%= javascript_include_tag 'application.js', 'jquery-1.4.2.min.js', 'jquery-ui-1.7.1.custom.min.js' %>
+	<%= stylesheet_link_tag 'colorbox','common', 'ui/smoothness/jquery-ui-1.7.1.custom.css' %>
+	<%= javascript_include_tag 'jquery-1.4.2.min.js', 'jquery-ui-1.7.1.custom.min.js', 'jquery.colorbox-min', :defaults %>
 	<%= csrf_meta_tag %>
 </head>
 <body>
 	<div id="container">
 	  <div id="davheader">
 	    <div id="drew_logo"><a href="/"><img src="/images/drew_logo.gif" alt="Drew Altizer" width="116" height="163" border="0" /></a></div>
-	    <div id="head_nav"> <a href="/" id="mn1"><span>Events</span></a><a href="/videos" id="mn5"><span>Videos</span></a> <a href="/archives" id="mn2"><span>Archives</span></a> <a href="/home/contact" id="mn3"><span>Contact</span></a> <a href="/home/about" id="mn4"><span>About</span></a> </div>
+	    <div id="head_nav"> 
+			<a href="/" id="mn1"><span>Events</span></a><a href="/videos" id="mn5"><span>Videos</span></a> <a href="/archives" id="mn2"><span>Archives</span></a> <a href="/home/contact" id="mn3"><span>Contact</span></a> <a href="/home/about" id="mn4"><span>About</span></a> 
+		</div>
+		<div align="right">
+			Items on Cart:<br/>
+			<%= cart_items.count %> item(s)<br/>
+			<%= link_to "View Cart", cart_index_url%>
+		</div>
 	    <div class="breaker"></div>
 	  </div>
 	  <div id="spacer"></div>
@@ -26,30 +33,13 @@
 	  	<div id="body_body">
 
 			<div id="side_panel">
-				<ul>
-					<% unless customer_signed_in? %>
-					<li>Login</li>
-					<li>Forgot Password</li>
-					<li>Register</li>
-					<% end %>
-					<li>&nbsp;</li>
-					<li>Frequently Asked Questions</li>
-					<li>Returns and Refunds</li>
-					<li>&nbsp;</li>
-					<li>
-						<%= link_to (image_tag("/images/icons/rss.png", :border=>0), "#")%> 
-						<%= link_to(image_tag("/images/icons/followus.png", :border=>0), "#")%>
-					</li>
-				</ul>
+				<%= render 'shared/sidepanel' %>
 			</div>
 			<div id="body_content">
 	  			<%= yield %>
 	  		</div>
 			<p id="breaker"></p>
 	  	</div>
-	  </div>
-	  <div id="body_column2">
-		<%= render 'shared/sidepanel' %>
 	  </div>
 	  <div id="davfooter">
 	    <div class="davfooter_copy" style="padding-top:7px;padding-bottom:3px"><a href="/home/privacy">Privacy Policy</a> &nbsp;|&nbsp; <a href="/home/terms">Terms of Use</a> &nbsp;|&nbsp; <a href="/home/contact">Contact Us</a> &nbsp;|&nbsp; 

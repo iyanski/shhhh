@@ -1,0 +1,9 @@
+<h1><%= @page_title %></h1>
+<div style="width:300px; float:left; margin: 0 5px 0 5px;">
+	<img src="/photos/thumb2/<%= @image.id%>.jpeg" alt="<%= @image.caption%>"/>
+</div>
+<div style="width:300px; float:left;">
+	<p>Event: <%= @image.album.post.name%></p>
+	<p>Album: <%= @image.album.name%></p>
+	<p>Caption: <%= @image.caption%></p>
+</div>

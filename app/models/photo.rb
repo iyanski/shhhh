@@ -2,6 +2,10 @@ class Photo < ActiveRecord::Base
   belongs_to  :user
   belongs_to  :album
   belongs_to  :post
+  
+  has_many :cart_items
+  has_many :cart, :through => :cart_items
+  
   validates_presence_of   :file_name
   validates_presence_of   :file_type
   

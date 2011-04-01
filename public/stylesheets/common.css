@@ -333,3 +333,10 @@ div#side_panel ul{
 div#side_panel ul li{
 	list-style: none;
 }
+
+input.quantity{
+	border: 1px solid #999;
+}
+input, select{
+	padding: 3px;
+}
