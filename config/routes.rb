@@ -94,6 +94,7 @@ Drewaltizer::Application.routes.draw do
   match "photos/thumb0/:id", :controller => "photos", :action => "thumb0"
   match "photos/thumb1/:id", :controller => "photos", :action => "thumb1"
   match "photos/thumb2/:id", :controller => "photos", :action => "thumb2"
+  match "photos/download/:id", :controller => "photos", :action => "download"
   
   resources :albums
   resources :archives
