@@ -12,7 +12,7 @@ development:
   database: drew
   pool: 5
   username: root
-  password: 
+  password: root
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -32,8 +32,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: drewaltizer_production
+  database: drew
   pool: 5
   username: root
-  password:
+  password: root
   socket: /tmp/mysql.sock
