@@ -4,4 +4,4 @@
 		<%= link_to image_tag("/photos/thumb1/#{event.photos.first.id}"), :controller=>"events", :action=>"show", :id=>event %>
 		<p><%= event.name %></p>
 	</div>
-<% end if @events %>
+<% end %>
