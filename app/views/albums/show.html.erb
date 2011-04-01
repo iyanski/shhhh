@@ -10,7 +10,7 @@
 			<%= link_to (image_tag("/images/icons/cart.gif", 		:width=> 16, :height=>16, :border=>0, :item_id => photo.id), cart_index_path, 'data-remote' => true, 'data-method' => "POST")%>
 		</div>
 	</div>
-<% end %>
+<% end unless @photos.nil? %>
 
 <script>
 	jQuery(function(){
