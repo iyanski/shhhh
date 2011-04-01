@@ -2,7 +2,7 @@
 <% @events.each do |event| %>
 	<% unless event.photos.empty? %>
 	<div class="thumbnails">
-		<%= link_to image_tag("/photos/thumb1/#{event.photos.first.id}"), :controller=>"events", :action=>"show", :id => event %>
+		<%= link_to image_tag("/photos/thumb1/#{event.photos.first.id}"), "/levis" %>
 		<p><%= event.name %></p>
 	</div>
 	<% end %>

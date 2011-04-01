@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   end
   
   def show
-    post = Post.find_by_id(params[:id])
+    post = Post.find_by_id(1)
     @page_title = post.name
     @albums = post.albums.paginate(:page => params[:page], :per_page => 10)
   end
