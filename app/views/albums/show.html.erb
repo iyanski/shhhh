@@ -4,7 +4,7 @@
 		<div class="photo"><%= link_to image_tag("/photos/thumb1/#{photo.id}.jpeg") , "/photos/thumb2/#{photo.id}.jpg", :rel => "photos" %></div>
 		<p><strong><%= photo.caption%></strong></p>
 		<div>
-			<%= link_to image_tag("/images/icons/favorites.png", width=> 16, :height=>16, :border=>0), "#" %>
+			<%= link_to image_tag("/images/icons/favorites.png", :width=> 16, :height=>16, :border=>0), "#" %>
 			<%= link_to image_tag("/images/icons/facebook.png", :rel => "photos", :width=> 16, :height=>16, :border=>0), "#" %>
 			<%= link_to image_tag("/images/icons/download.gif", :rel => "photos", :width=> 16, :height=>16, :border=>0, :class => "add_to_favorites"), "javascript:void()" %>
 			<%= link_to image_tag("/images/icons/cart.gif", :width=> 16, :height=>16, :border=>0, :item_id => photo.id), cart_index_path, 'data-remote' => true, 'data-method' => "POST" %>
