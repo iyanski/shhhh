@@ -1,4 +1,5 @@
 <h1><%= @page_title %></h1>
+<div style="text-align:right"><%= will_paginate @photos unless @photos.nil?%></div>
 <% @photos.each do |photo| %>
 	<div class="thumbnails">
 		<div class="photo"><%= link_to image_tag("/photos/thumb1/#{photo.id}.jpeg") , "/photos/thumb2/#{photo.id}.jpg", :rel => "photos" %></div>
@@ -14,9 +15,12 @@
 		</div>
 	</div>
 <% end unless @photos.nil? %>
-
+<div style="clear:both;">&nbsp;</div>
+<div style="text-align:center"><%= will_paginate @photos unless @photos.nil?%></div>
 <script>
 	jQuery(function(){
 		jQuery("a[rel='photos']").colorbox({slideshow:true});
 	});
 </script>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
