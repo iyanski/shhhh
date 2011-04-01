@@ -6,4 +6,4 @@
 		<p><%= album.created_at.strftime("%d %B %Y")%></p>
 		<span style="color: #5F92AF;"><%= album.photos.count%> Photos</span>
 	</div>
-<% end %>
+<% end unless @albums.nil? %>
