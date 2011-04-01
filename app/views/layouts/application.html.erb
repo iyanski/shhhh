@@ -17,7 +17,9 @@
 <body>
 	<div id="container">
 	  <div id="davheader">
-	    <div id="drew_logo"><a href="/"><img src="/images/drew_logo.gif" alt="Drew Altizer" width="116" height="163" border="0" /></a></div>
+	    <div id="drew_logo">
+			<%= link_to(image_tag("/images/drew_logo.gif", :alt => "Drew Altizer", :width => 116, :height => 163, :border => 0), "/")%>
+		</div>
 	    <div id="head_nav"> 
 			<a href="/" id="mn1"><span>Events</span></a><a href="/videos" id="mn5"><span>Videos</span></a> <a href="/archives" id="mn2"><span>Archives</span></a> <a href="/home/contact" id="mn3"><span>Contact</span></a> <a href="/home/about" id="mn4"><span>About</span></a> 
 		</div>
