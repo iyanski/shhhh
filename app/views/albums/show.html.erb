@@ -1,7 +1,7 @@
 <h1><%= @page_title %></h1>
 <% @photos.each do |photo| %>
 	<div class="thumbnails">
-		<div class="photo"><%= link_to (image_tag("/photos/thumb1/#{photo.id}.jpeg") , "/photos/thumb2/#{photo.id}.jpg", :rel => "photos") %></div>
+		<div class="photo"><%= link_to image_tag("/photos/thumb1/#{photo.id}.jpeg") , "/photos/thumb2/#{photo.id}.jpg", :rel => "photos" %></div>
 		<p><strong><%= photo.caption%></strong></p>
 		<div>
 			<%= link_to image_tag("/images/icons/favorites.png", width=> 16, :height=>16, :border=>0), "#" %>
