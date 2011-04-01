@@ -246,8 +246,8 @@ module GL
         
         def name_for_delegate(record, attributes)
           case attributes[:prefix]
-          when true: attributes.values_at(:to, :name).join('_')
-          when false,nil: record.respond_to?(attributes[:name]) ? attributes.values_at(:to, :name).join('_') : attributes[:name]
+          when true then attributes.values_at(:to, :name).join('_')
+          when false,nil then record.respond_to?(attributes[:name]) ? attributes.values_at(:to, :name).join('_') : attributes[:name]
           else
             attributes.values_at(:prefix, :name).join('_')
           end
@@ -333,7 +333,7 @@ module GL
             end
 
             array = []
-            each_with_index do |record, idx|
+            each do |record, idx|
               attrib = {}
               scn.each do |method|
                 attrib.update(method => klass.value_for_column(record, method, options)) 
