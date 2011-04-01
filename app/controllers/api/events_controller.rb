@@ -89,9 +89,7 @@ class Api::EventsController < ApiController
   def synchronize
     post = Post.find_by_id(params[:id])
     operation = Operation.new(:ref_id => post.id, :action => "synchronize")
-    if operation.save!
-      Resque.enqueue(Synchronize, operation.id)
-    end
+    operation.save
     respond_to do |format|
       format.json {ext :success => true, :message => post.name}
     end
