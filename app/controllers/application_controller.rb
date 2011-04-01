@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
   before_filter :initialize_cart
-
+  protect_from_forgery
+  
+  
   def require_api_login
     if user_signed_in?
       true
@@ -19,10 +20,8 @@ class ApplicationController < ActionController::Base
     
     render :json => options.to_json
   end
-  
-  
-  
-  private
+
+  private 
   def initialize_cart
     if session[:cart_id]
       @cart = Cart.find(session[:cart_id])
@@ -31,4 +30,5 @@ class ApplicationController < ActionController::Base
       session[:cart_id] = @cart.id
     end
   end
+  
 end
