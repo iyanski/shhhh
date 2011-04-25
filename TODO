@@ -1,0 +1,22 @@
+All Pages:
+	- add cart info (ajaxable)
+	- make cart info updtable
+	- add FAQ menu
+	- redesign sidepanel
+	- add notification box
+	- add facebook module in sidepanel
+	- add google analytics
+Events Page:
+	- when items are hovered, set background to grey
+	- add to favorites
+	- share to facebook
+	
+Cart Page
+	- create the cart logic
+
+Billing Page
+	- create the billing pages
+	- integrate with USAEPAY (use sandbox first)
+
+Customers Page
+	- show their download/ordered

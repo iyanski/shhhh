@@ -1,0 +1,8 @@
+<% if @cart_items.nil? %>
+  $('#price_for_<%= @id%>').html(<%= @price%>)
+<% else %>
+  <% @cart_items.each do |item| %>
+    $('#price_for_<%= item.id%>').html(<%= @price %>);
+	location.href = '/cart';
+  <% end %>
+<% end %>

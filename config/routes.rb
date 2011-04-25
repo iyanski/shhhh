@@ -89,7 +89,21 @@ Drewaltizer::Application.routes.draw do
   resources :events
   resources :favorites
   resources :photos
-  resources :cart
+  resources :cart do
+    collection do
+      post 'remove_item'
+      post 'add_item'
+      post 'change_paper_type'
+      post 'change_paper_size'
+      post 'duplicate_item'
+      post 'change_quantity'
+    end
+  end
+  
+  match "cart/add_item/:id", :controller => "cart", :action => "add_item"
+  match "cart/remove_item/:id", :controller => "cart", :action => "remove_item"
+  match "cart/duplicate_item/:id", :controller => "cart", :action => "duplicate_item"
+  match "cart/change_quantity/:id", :controller => "cart", :action => "duplicate_item"
   
   match "photos/thumb0/:id", :controller => "photos", :action => "thumb0"
   match "photos/thumb1/:id", :controller => "photos", :action => "thumb1"

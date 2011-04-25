@@ -1,7 +1,7 @@
 <h1><%= @page_title %></h1>
 <% @albums.each do |album| %>
 	<div class="thumbnails">
-		<%= link_to image_tag("/photos/thumb1/#{album.photos.last.id}") , album_path %>
+		<%= link_to image_tag("/photos/thumb1/#{album.photos.last.id}.jpeg", :border => 0) , album_path %>
 		<p><strong><%= album.name%></strong></p>
 		<p><%= album.created_at.strftime("%d %B %Y")%></p>
 		<span style="color: #5F92AF;"><%= album.photos.count%> Photos</span>

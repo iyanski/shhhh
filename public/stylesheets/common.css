@@ -49,11 +49,11 @@ body {
 }
 #body_content{
 	float:left;
-	/*width: 720px;*/
-	width: 1000px;
+	width: 710px;
+	/*width: 1000px;*/
 }
 #side_panel{
-	width: 280px;
+	width: 290px;
 	float: right;
 }
 #body_content h1{
@@ -61,9 +61,8 @@ body {
 	font-size: 18px;
 	font-size: 16px;
 	color: #e17b4e;
-	margin-right: 10px;
+	margin: 0 10px 0 5px;
 	padding: 0px;
-	margin-top: 0px;
 }
 #drew_logo {
     height: 163px;
@@ -79,11 +78,13 @@ body {
     font-size:0;
 }
 #head_cart {
+	position: relative;
+	top: 100px;
     margin-left: 3px;
     float: left;
     height: 139px;
     width: 138px;
-    display: inline;
+	left: 385px;
 }
 
 #head_number {
@@ -213,6 +214,9 @@ body {
 	vertical-align: middle;
 	padding: 6px;
 }
+div.clear{
+	clear:both;
+}
 
 a:link {
     color: #5f92af;
@@ -340,4 +344,41 @@ input.quantity{
 }
 input, select{
 	padding: 3px;
+}
+
+.pagination {
+  padding: 3px 0px;
+}
+
+.pagination a {
+  background-color: #EAEAEA;
+  border: 1px solid #E4E2E2;
+  color: #505050;
+  display: inline-block;
+  margin: 4px 0px;
+  padding: 6px;
+}
+
+.pagination a:hover {
+  background-color: #084E7E;
+  border: 1px solid #064570;
+  color: #FFF;
+}
+
+.pagination em {
+  font-weight: bold;
+  padding: 6px;
+}
+
+.pagination .previous_page.disabled {
+  display: none;
+}
+
+.pagination .next_page.disabled {
+  display: none;
+}
+
+div.cart_items{
+  margin: 0 0 10px 10px; 
+  float:left;
 }

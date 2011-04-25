@@ -6,18 +6,40 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
   if (restore) selObj.selectedIndex=0;
 }
 
-jQuery(function(){
-	jQuery(".add_to_cart").click(function(){
-		var item_id = jQuery(this).attr('item_id');
-		jQuery.ajax({
+$(function(){
+	$(".add_to_favorites").click(function(){
+		var item_id = $(this).attr('item_id');
+		$.ajax({
+			url: '/home/index',
+			data: 'id=' + item_id,
+		});
+	});
+	$(".paper_size").change(function(){
+		var item_id = $(this).attr('item_id');
+		if($(this).val() != ""){
+		  $.ajax({
+		  	type: 'post',
+		  	url: '/cart/change_paper_size',
+		  	data: 'cart_item_id=' + item_id + '&id=' + $(this).val(),
+		  });
+		}
+	});
+	$(".paper_type").change(function(){
+		var item_id = $(this).attr('item_id');
+		if($(this).val() != ""){
+		  $.ajax({
+		  	type: 'post',
+		  	url: '/cart/change_paper_type',
+		  	data: 'id=' + $(this).val(),
+		  });
+		}
+	});
+	$('.quantity').change(function(){
+		var item_id = $(this).attr('item_id');
+		$.ajax({
 			type: 'post',
-			url: '/cart.json',
-			data: 'photo_id=' + item_id,
+			url: '/cart/change_quantity',
+			data: 'cart_item_id=' + item_id + '&quantity=' + $(this).val(),
 		});
 	});
-	jQuery(".add_to_favorites").click(function(){
-		jQuery.ajax({
-			url: '/home/index'
-		});
-	});
-});
+})

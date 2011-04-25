@@ -1,0 +1,10 @@
+<tr id="cart_item_<%= @cart_item.id %>">
+	<% unless @cart_item.photo.nil? %>
+	<td valign="top"><%= image_tag "/photos/thumb0/#{@cart_item.photo.id}.jpeg"%></td>
+	<td valign="top"><input type="text" class="quantity" value="<%= @cart_item.quantity%>" size=4 class="quantity" item_id=<%= @cart_item.id%>/></td>
+	<td valign="top"><%= generate_paper_size_combo(@cart_item.id, @cart_item.paper_size_id).html_safe %></td>
+	<td valign="top" id="price_for_<%= @cart_item.id%>"><%= @cart_item.price %></td>
+	<td valign="top"><%= link_to "Add Size", "/cart/duplicate_item/#{@cart_item.id}, :method => 'post', 'data-remote' => true "%></td>
+	<td valign="top"> <%= link_to "Remove", "/cart/remove_item/#{@cart_item.id}", :method => 'post', 'data-remote' => true %> </td>
+	<% end %>
+</tr>

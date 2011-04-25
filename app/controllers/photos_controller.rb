@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
     @image = Photo.find(params[:id])
     respond_to do |format|
       format.jpg { 
-        photo = MiniMagick::Image.open(RAILS_ROOT + "/photos/#{@image.post.folder}/#{@image.file_name}")
+        photo = MiniMagick::Image.open(RAILS_ROOT + "/photos/#{@image.post.folder}/thumb3/#{@image.file_name}")
         render :text => photo.to_blob, :status => 200, :content_type => "image/jpg"
       }
       format.html{

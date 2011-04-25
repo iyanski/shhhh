@@ -2,8 +2,8 @@
 <% @events.each do |event| %>
 	<% unless event.photos.empty? %>
 	<div class="thumbnails">
-		<%= link_to image_tag("/photos/thumb1/#{event.photos.first.id}"), "/levis" %>
+		<%= link_to image_tag("/photos/thumb1/#{event.photos.first.id}.jpg", :border => 0), :controller => (event.id == 1 ? "albums" : "events"), :action => "show", :id => (event.id == 1 ? 1 : event) %>
 		<p><%= event.name %></p>
 	</div>
 	<% end %>
-<% end unless @events.nil? %>
+<% end %>

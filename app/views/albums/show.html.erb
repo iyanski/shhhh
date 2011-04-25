@@ -1,26 +1,26 @@
-<h1><%= @page_title %></h1>
-<div style="text-align:right"><%= will_paginate @photos unless @photos.nil?%></div>
+<h1 style="float:left"><%= @page_title %></h1>
+<div style="float:right"><%= will_paginate @photos %></div>
+<p id="breaker"></p>
 <% @photos.each do |photo| %>
 	<div class="thumbnails">
 		<div class="photo"><%= link_to image_tag("/photos/thumb1/#{photo.id}.jpeg") , "/photos/thumb2/#{photo.id}.jpg", :rel => "photos" %></div>
+		<!--
 		<p><%= link_to "Download", "/photos/download/#{photo.id}.jpg", :rel => "Full Res Photo", :target => "_download" %></p>
 		<p><strong><%= photo.caption%></strong></p>
-		<div>
-		<!--
-			<%= link_to image_tag("/images/icons/favorites.png", :width=> 16, :height=>16, :border=>0), "#" %>
-			<%= link_to image_tag("/images/icons/facebook.png", :rel => "photos", :width=> 16, :height=>16, :border=>0), "#" %>
-			<%= link_to image_tag("/images/icons/download.gif", :rel => "photos", :width=> 16, :height=>16, :border=>0, :class => "add_to_favorites"), "javascript:void()" %>
-			<%= link_to image_tag("/images/icons/cart.gif", :width=> 16, :height=>16, :border=>0, :item_id => photo.id), cart_index_path, 'data-remote' => true, 'data-method' => "POST" %>
 		-->
+		<div>
+			<%= link_to image_tag("/images/icons/favorites.png", :width=> 16, :height=>16, :item_id => photo.id, :border=>0, :class => "add_to_favorites"), "javascript:void()" %>
+			<%= link_to image_tag("/images/icons/facebook.png", :rel => "photos", :width=> 16, :height=>16, :border=>0), "#" %>
+			<%= link_to image_tag("/images/icons/download.gif", :rel => "photos", :width=> 16, :item_id => photo.id, :height=>16, :border=>0), "/photos/download/#{photo.id}.jpg", :target => "_download" %>
+			<%= link_to image_tag("/images/icons/cart.gif", :width=> 16, :height=>16, :border=>0, :item_id => photo.id, :class => "add_to_cart"), "/cart/add_item/#{photo.id}", 'data-remote' => true, :method => 'post'%>
 		</div>
 	</div>
 <% end unless @photos.nil? %>
-<div style="clear:both;">&nbsp;</div>
-<div style="text-align:center"><%= will_paginate @photos unless @photos.nil?%></div>
+<p id="breaker"></p>
+<div style="float:right"><%= will_paginate @photos %></div>
 <script>
 	jQuery(function(){
 		jQuery("a[rel='photos']").colorbox({slideshow:true});
 	});
 </script>
-<p>&nbsp;</p>
 <p>&nbsp;</p>

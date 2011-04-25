@@ -1,0 +1,17 @@
+$('table.cart_items').append("<%= escape_javascript(render :partial => 'cart_item') %>")
+$(".paper_size").live('change', function(){
+	var item_id = $(this).attr('item_id');
+	$.ajax({
+		type: 'post',
+		url: '/cart/change_paper_size',
+		data: 'cart_item_id=' + item_id + '&id=' + $(this).val(),
+	});
+});
+$('.quantity').change(function(){
+	var item_id = $(this).attr('item_id');
+	$.ajax({
+		type: 'post',
+		url: '/cart/change_quantity',
+		data: 'cart_item_id=' + item_id + '&quantity=' + $(this).val(),
+	});
+});

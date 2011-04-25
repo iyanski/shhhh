@@ -75,13 +75,17 @@ ActiveRecord::Schema.define(:version => 20110330034641) do
   create_table "cart_items", :force => true do |t|
     t.integer  "photo_id"
     t.integer  "cart_id"
-    t.integer  "paper_size_id"
-    t.integer  "paper_type_id"
+    t.integer  "paper_size_id", :default => 1
+    t.integer  "paper_type_id", :default => 1
     t.float    "price"
     t.integer  "amount"
+    t.integer  "quantity",      :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "cart_items", ["paper_size_id"], :name => "index_cart_items_on_paper_size_id"
+  add_index "cart_items", ["paper_type_id"], :name => "index_cart_items_on_paper_type_id"
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at"
