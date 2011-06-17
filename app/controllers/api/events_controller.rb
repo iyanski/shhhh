@@ -1,45 +1,27 @@
 class Api::EventsController < ApiController
 
   def index
-    respond_to do |format|
-      format.json  { ext Post.store{ find(:all) } }
-    end
-  end
-  
-  def list
-    respond_to do |format|
-      format.json  { ext Post.store{ find(:all) } }
-    end
+    ext Post.store{ find(:all) }
   end
   
   def buckets
-    Dir.chdir("photos")
+    Dir.chdir(photo_path)
     directory = Dir.glob("*")
     Dir.chdir("../")
-    respond_to do |format|
-      items = Array.new
-      directory.each do |folders|
-        items.push({:name => folders})
-      end
-      format.json { 
-        ext ({ :total => 10, 
-          :metaData => {
-            :fields => [{:name => "name",:mapping => "name"}],
-            :totalProperty => "total",
-            :successProperty => "success",
-            :root => "buckets",
-            :idProperty => "id"
-          },
-          :buckets => items
-        }) 
-      }
+    items = Array.new
+    directory.each do |folders|
+      items.push({:name => folders})
     end
-  end
-  
-  def folders
-    respond_to do |format|
-      
-    end
+    ext ({ :total => 10, 
+      :metaData => {
+        :fields => [{:name => "name",:mapping => "name"}],
+        :totalProperty => "total",
+        :successProperty => "success",
+        :root => "buckets",
+        :idProperty => "id"
+      },
+      :buckets => items
+    }) 
   end
   
   def edit
@@ -65,15 +47,12 @@ class Api::EventsController < ApiController
   end
   
   def create
+    Rails.logger.info(params[:post])
     event = Post.new(params[:post])
     if event.save!
-      respond_to do |format|
-        format.json  { ext :success => true }
-      end
+      ext :success => true, :message => "Event Created"
     else
-      respond_to do |format|
-        format.json  { ext :success => false, :message => "Event not created" }
-      end
+      ext :failed => false, :message => "Event not created"
     end
   end
   
@@ -111,6 +90,19 @@ class Api::EventsController < ApiController
     
     respond_to do |format|
       format.json {ext :success => true, :message => post.folder}
+      ext :success => true, :message => post.folder
+    end
+  end
+  
+  def destroy
+    post = Post.find(params[:id])
+    Rails.logger.info(post.inspect)
+    respond_to do |format|
+      if post.delete
+        format.json {ext :success => true, :message => post.name + " Deleted Successfully"}
+      else
+        format.json {ext :failure => true, :message => post.errors.full_messages.first}
+      end
     end
   end
 

@@ -1,0 +1,54 @@
+.data-view .x-panel-body{
+	background: white;
+	font: 11px Arial, Helvetica, sans-serif;
+}
+.data-view .thumb{
+	background: #dddddd;
+	padding: 3px;
+	text-align: center;
+}
+.data-view .thumb img{
+	text-align: center;
+}
+
+.data-view span.x-editable{
+	font-size: 14px;
+	background-color: #cccccc;
+}
+
+.data-view .thumb-wrap{
+	float: left;
+	margin: 4px;
+	margin-right: 0;
+	padding: 5px;
+}
+.data-view .thumb-wrap span{
+	display: block;
+	overflow: hidden;
+	text-align: center;
+}
+
+.data-view .x-view-over{
+    border:1px solid #dddddd;
+    background: #efefef url(../../ext/3.2.0/resources/images/default/grid/row-over.gif) repeat-x left top;
+	padding: 4px;
+}
+
+.data-view .x-view-selected{
+	/*background: #eff5fb url(../../ext/3.2.0/resources/images/selected.gif) no-repeat right bottom;*/
+	background: #eff5fb;
+	border:1px solid #99bbe8;
+	padding: 4px;
+}
+.data-view .x-view-selected .thumb{
+	background:transparent;
+}
+
+.data-view .loading-indicator {
+	font-size:11px;
+	background-image:url('../../ext/3.2.0/resources/images/default/grid/loading.gif');
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left:20px;
+	margin:10px;
+}

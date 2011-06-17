@@ -6,63 +6,43 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>Drewaltizer Control Panel</title>
         <link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="stylesheet" type="text/css" href="/ext/ext/3.2.0/resources/css/ext-all.css"/>
-		<link rel="stylesheet" type="text/css" href="/ext/lib/stylesheets/application.css"/>
-		<link rel="stylesheet" type="text/css" href="/ext/lib/stylesheets/dataview.css"/>
+		<link rel="stylesheet" type="text/css" href="/app/ext/3.2.0/resources/css/ext-all.css"/>
+		<link rel="stylesheet" type="text/css" href="/app/lib/stylesheets/application.css"/>
+		<link rel="stylesheet" type="text/css" href="/app/lib/stylesheets/dataview.css"/>
 	
-	  	<script type="text/javascript" src="/ext/ext/3.2.0/adapter/ext/ext-base-debug.js"></script>
-      	<script type="text/javascript" src="/ext/ext/3.2.0/ext-all-debug.js"></script>
-      	<script type="text/javascript" src="/ext/boot/guard.js"></script>
-      	<script type="text/javascript" src="/ext/lib/ux/Ext.App.js"></script>
-      	<script type="text/javascript" src="/ext/lib/ux/Ext.ux.Portal.js"></script>
-      	<script type="text/javascript" src="/ext/lib/ux/Ext.ux.PortalColumn.js"></script>
-      	<script type="text/javascript" src="/ext/lib/ux/Ext.ux.Portlet.js"></script>
-      	<script type="text/javascript" src="/ext/lib/ux/Ext.ux.Spotlight.js"></script>
-      	<script type="text/javascript" src="/ext/lib/ux/Ext.ux.StatusBar.js"></script>
-      	<script type="text/javascript" src="/ext/lib/ux/Ext.ux.grid.RowEditor.js"></script>
-      	<script type="text/javascript" src="/ext/tools/Msg.js"></script>
-      	<script type="text/javascript" src="/ext/tools/ajax.js"></script>
-      	<script type="text/javascript" src="/ext/tools/ext.js"></script>
-      	<script type="text/javascript" src="/ext/tools/handlers.js"></script>
-      	<script type="text/javascript" src="/ext/tools/nativelib-dev.js"></script>
-      	<script type="text/javascript" src="/ext/tools/overrides.js"></script>
-      	<script type="text/javascript" src="/ext/tools/tools.js"></script>
-      	<script type="text/javascript" src="/ext/boot/env.js"></script>
-      	<script type="text/javascript" src="/ext/var/base/AbstractManager.js"></script>
-      	<script type="text/javascript" src="/ext/var/base/Manager.js"></script>
-      	<script type="text/javascript" src="/ext/var/base/components/Menu.js"></script>
-      	<script type="text/javascript" src="/ext/var/base/components/StatusBar.js"></script>
-      	<script type="text/javascript" src="/ext/var/base/components/ViewPort.js"></script>
-      	<script type="text/javascript" src="/ext/var/base/data/AbstractStore.js"></script>
-		<script type="text/javascript" src="/ext/var/base/data/AbstractHttpStore.js"></script>
-      	<script type="text/javascript" src="/ext/var/base/tools/icons.js"></script>
-      	<script type="text/javascript" src="/ext/var/dashboard/Manager.js"></script>
-      	<script type="text/javascript" src="/ext/var/dashboard/components/LoginWindow.js"></script>
-      	<script type="text/javascript" src="/ext/var/dashboard/components/Top.js"></script>
-      	
-		<script type="text/javascript" src="/ext/var/data/Posts.js"></script>
-		<script type="text/javascript" src="/ext/var/data/Albums.js"></script>
-		<script type="text/javascript" src="/ext/var/data/Photos.js"></script>
-		<script type="text/javascript" src="/ext/var/data/Buckets.js"></script>
+	  	<script type="text/javascript" src="/app/ext/3.2.0/adapter/ext/ext-base-debug.js"></script>
+      	<script type="text/javascript" src="/app/ext/3.2.0/ext-all-debug.js"></script>
+      	<script type="text/javascript" src="/app/boot/guard.js"></script>
+      	<script type="text/javascript" src="/app/lib/ux/Ext.App.js"></script>
+      	<script type="text/javascript" src="/app/lib/ux/Ext.ux.Portal.js"></script>
+      	<script type="text/javascript" src="/app/lib/ux/Ext.ux.PortalColumn.js"></script>
+      	<script type="text/javascript" src="/app/lib/ux/Ext.ux.Portlet.js"></script>
+      	<script type="text/javascript" src="/app/lib/ux/Ext.ux.Spotlight.js"></script>
+      	<script type="text/javascript" src="/app/lib/ux/Ext.ux.StatusBar.js"></script>
+      	<script type="text/javascript" src="/app/lib/ux/Ext.ux.grid.RowEditor.js"></script>
+      	<script type="text/javascript" src="/app/tools/Msg.js"></script>
+      	<script type="text/javascript" src="/app/tools/ajax.js"></script>
+      	<script type="text/javascript" src="/app/tools/ext.js"></script>
+      	<script type="text/javascript" src="/app/tools/handlers.js"></script>
+      	<script type="text/javascript" src="/app/tools/nativelib-dev.js"></script>
+      	<script type="text/javascript" src="/app/tools/overrides.js"></script>
+      	<script type="text/javascript" src="/app/tools/tools.js"></script>
+      	<script type="text/javascript" src="/app/boot/env.js"></script>
+
+		<script type="text/javascript" src="/app/var/base/components/StatusBar.js"></script>
+		<script type="text/javascript" src="/app/var/base/components/ViewPort.js"></script>
+		<script type="text/javascript" src="/app/var/base/components/TreeNavigation.js"></script>
+		<script type="text/javascript" src="/app/var/base/components/SideNavigation.js"></script>
+		<script type="text/javascript" src="/app/var/base/Manager.js"></script>
 		
-      	<script type="text/javascript" src="/ext/var/posts/categories/components/List.js"></script>
-		<script type="text/javascript" src="/ext/var/posts/categories/components/Create.js"></script>
+		<script type="text/javascript" src="/app/var/post/store/Post.js"></script>
+		<script type="text/javascript" src="/app/var/post/components/List.js"></script>
+		<script type="text/javascript" src="/app/var/post/components/Create.js"></script>
+		<script type="text/javascript" src="/app/var/post/Manager.js"></script>
+		
+		<script type="text/javascript" src="/app/var/users/Manager.js"></script>
 
-      	<script type="text/javascript" src="/ext/var/posts/Manager.js"></script>
-	  	<script type="text/javascript" src="/ext/var/posts/components/Updater.js"></script>
-      	<script type="text/javascript" src="/ext/var/posts/components/List.js"></script>
-		<script type="text/javascript" src="/ext/var/posts/components/Info.js"></script>
-      	<script type="text/javascript" src="/ext/var/posts/components/Container.js"></script>
-		<script type="text/javascript" src="/ext/var/posts/components/Albums.js"></script>
-		<script type="text/javascript" src="/ext/var/posts/components/Photos.js"></script>
-
-		<script type="text/javascript" src="/ext/var/data/Users.js"></script>
-		<script type="text/javascript" src="/ext/var/users/Manager.js"></script>
-	  	<script type="text/javascript" src="/ext/var/users/components/Updater.js"></script>
-      	<script type="text/javascript" src="/ext/var/users/components/List.js"></script>
-		<script type="text/javascript" src="/ext/var/users/components/Info.js"></script>
-      	<script type="text/javascript" src="/ext/var/users/components/Container.js"></script>
-      	<script type="text/javascript" src="/ext/boot/init.js"></script>
+      	<script type="text/javascript" src="/app/boot/init.js"></script>
 
 		<script type="text/javascript">
 		Ext.onReady(Extriajs.init);
