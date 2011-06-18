@@ -1,9 +1,42 @@
-<h1><%= @page_title %></h1>
-<% @events.each do |event| %>
-	<% unless event.photos.empty? %>
-	<div class="thumbnails">
-		<%= link_to image_tag("/photos/thumb1/#{event.photos.first.id}.jpg", :border => 0), :controller => (event.id == 1 ? "albums" : "events"), :action => "show", :id => (event.id == 1 ? 1 : event) %>
-		<p><%= event.name %></p>
+<h1 id="eventtitle">
+	<div id="Forms">
+		<form id="frmEventList" name="frmEventList" method="post" action="/index.php">
+		<span style="display: none;"><input type="hidden" value="1" name="page">
+			<input type="hidden" value="0" name="showall">
+			<input type="hidden" value="1" name="form_reset">
+			<input type="hidden" value="" name="form_action">
+			<input type="hidden" value="" name="id">
+		</span>
+		<table cellspacing="0" cellpadding="0" boder="0">
+			<tbody>
+				<tr>
+					<td valign="top" align="left">Search for an event</td>
+					<td valign="top" align="left"><input type="text" value="" name="searchkey" maxlength="20" size="22"></td>
+					<td valign="top" align="left"></td>
+				</tr>
+			</tbody>
+		</table>
+		</form>
 	</div>
-	<% end %>
+</h1>
+<%= will_paginate @events %>
+<div id="gallerylist">
+<% @events.each do |event| %>
+	<% #unless event.photos.empty? %>
+	<div class="photopanels">
+    	<div class="thumbnail">
+			<div id="create-user" class="options">
+				<a title="<%= event.name%>" href="/event.php?event_id=2572">
+					<img width="130" height="130" border="0" alt="<%= event.name%>" src="get_thumb.php?type=event&amp;id=1308293806_0000-Nordstrom-Jason-Wu-110616.jpg&amp;thumb=2">
+					<%# = link_to image_tag("/photos/thumb1/#{event.photos.first.id}.jpg", :border => 0), :controller => (event.id == 1 ? "albums" : "events"), :action => "show", :id => (event.id == 1 ? 1 : event) %>
+				</a>
+			</div>
+		</div>
+    	<div class="details"><strong><%= event.name%></strong></div>
+    	<div class="date"><%= event.event_date.strftime "%e %B %Y" %></div>
+	</div>
+	<% #end %>
 <% end %>
+</div>
+<div class="breaker"></div>
+<%= will_paginate @events %>

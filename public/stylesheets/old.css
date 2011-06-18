@@ -1,0 +1,384 @@
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+}
+#body {
+	width: 760px;
+	margin: auto;
+}
+body {
+	background-color: #FFFFFF;
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-right: 10px;
+	margin-bottom: 50px;
+}
+
+#container {
+	margin: 0 auto;
+	width: 1010px;
+	background: #fff;
+}
+#header {
+	height: 139px;
+}
+#logo {
+	background: url(../images/drew_logo.gif) no-repeat;
+	width: 116px;
+	height: 139px;
+	float: left;
+}
+
+#davheader {
+    background: url(../images/bg_headblog.jpg) no-repeat;
+	width: 1010px;
+	height: 199px;
+    background-position: right top;
+    background-repeat: no-repeat;
+    padding-bottom: 8px;
+}
+#header-right {
+	float: right;
+	background: url(../images/bg_headblog.jpg) no-repeat;
+	width: 871px;
+	height: 199px;
+}
+#header h1 {
+	margin: 0;
+}
+#body_content{
+	float:left;
+	width: 710px;
+	/*width: 1000px;*/
+}
+#side_panel{
+	width: 290px;
+	float: right;
+}
+#body_content h1{
+	color: #ccc;
+	font-size: 18px;
+	font-size: 16px;
+	color: #e17b4e;
+	margin: 0 10px 0 5px;
+	padding: 0px;
+}
+#drew_logo {
+    height: 163px;
+    width: 116px;
+    float: left;
+    display: inline;
+    font-size:0;
+    background:url(../images/drew_logo.gif) no-repeat;
+}
+#drew_logo h1{
+    height: 139px;
+    width: 116px;
+    font-size:0;
+}
+#head_cart {
+	position: relative;
+	top: 100px;
+    margin-left: 3px;
+    float: left;
+    height: 139px;
+    width: 138px;
+	left: 385px;
+}
+
+#head_number {
+    background:url(../images/title_contact.gif) no-repeat;
+    width:138px;
+    height:55px;
+}
+
+#head_search {
+    float: left;
+    width: 161px;
+    margin-top: 107px;
+    margin-left: 3px;
+    height: 32px;
+    overflow: hidden;
+}
+
+#head_nav {
+    float: left;
+    width: 283px;
+    display: inline;
+    margin-left: 56px;
+    height: 32px;
+    margin-top: 130px;
+}
+#head_nav span {
+    visibility: hidden;
+    line-height: 25px;
+}
+#spacer {
+	float: left;
+	height: 20px;
+}
+#navigation {
+	float: left;
+	width: 760px;
+	background: #333;
+}
+#navigation ul {
+	margin: 0;
+	padding: 0;
+}
+#navigation ul li {
+	list-style-type: none;
+	display: inline;
+}
+#navigation li a {
+	display: block;
+	float: left;
+	padding: 5px 10px;
+	color: #fff;
+	text-decoration: none;
+	border-right: 1px solid #fff;
+}
+#navigation li a:hover {
+	background: #383;
+}
+#page-heading {
+	font-size: 16px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	padding: 8px 0px 10px 0px;
+	color: #cc6633;
+}
+#search-result {
+	border: 1px solid #d8d8d8;
+}
+#content-container {
+	float: left;
+	width: 760px;
+	background: #fff url(/wp-content/uploads/layout-two-fixed-background.gif) repeat-y 100% 0;
+}
+#content {
+	clear: left;
+	float: left;
+	width: 590px;
+	padding: 0px 0;
+	display: inline;
+}
+#content h2 {
+	margin: 0;
+}
+#aside {
+	float: right;
+	width: 142px;
+	padding: 15px 0px 0px 0px;
+	margin: 0 10px 0 0;
+	display: inline;
+}
+#aside h3 {
+	margin: 0;
+}
+#footer {
+	clear: left;
+	height: 45px;
+	margin-bottom: 20px;
+}
+/*accordion*/
+
+.accordian {
+	width: 180px;
+	padding-right: 10px;
+	float: left;
+	display: inline;
+	position: relative;
+	height: 500px;
+}
+.accordian ul {
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #d8d8d8;
+}
+.accordian li {
+	list-style-type: none;
+}
+.dimension {
+	padding: 12px 6px 12px 6px;
+}
+.even, .odd {
+	border-top: 1px solid #d8d8d8;
+	border-bottom: 1px solid #d8d8d8;
+	font-weight: bold;
+	font-size: 15px;
+	font-family: Verdana, Geneva, sans-serif;
+	color: #cc6633;
+	background-color: #ececec;
+	vertical-align: middle;
+	padding: 6px;
+}
+div.clear{
+	clear:both;
+}
+
+a:link {
+    color: #5f92af;
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+    color: #5f92af;
+}
+a:hover {
+    text-decoration: none;
+    color: #2DD3E1;
+}
+a:active {
+    text-decoration: none;
+    color: #2DD3E1;
+}
+
+#mn1 {
+    background-image: url(../images/nav_events.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+    display: block;
+    float: left;
+    height: 32px;
+    width: 52px;
+    margin-right: 1px;
+    text-align: center;
+}
+#mn2 {
+    background-image: url(../images/nav_archives.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+    display: block;
+    float: left;
+    height: 32px;
+    width: 66px;
+    margin-right: 1px;
+    text-align: center;
+}
+#mn3 {
+    background-image: url(../images/nav_contact.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+    display: block;
+    float: left;
+    height: 32px;
+    width: 61px;
+    margin-right: 1px;
+    text-align: center;
+}
+#mn4 {
+    background-image: url(../images/nav_about.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+    display: block;
+    float: left;
+    height: 32px;
+    width: 48px;
+    margin-right: 1px;
+    text-align: center;
+}
+#mn5 {
+    background-image: url(../images/nav_videos.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+    display: block;
+    float: left;
+    height: 32px;
+    width: 48px;
+    margin-right: 1px;
+    text-align: center;
+}
+#mn1:hover {
+    background-position: left bottom;
+}
+#mn2:hover {
+    background-position: left bottom;
+}
+#mn3:hover {
+    background-position: left bottom;
+}
+#mn4:hover {
+    background-position: left bottom;
+}
+#mn5:hover {
+    background-position: left bottom;
+}
+
+div.sidepanel{
+	float:right;
+	width: 300px;
+}
+
+div.thumbnails{
+	margin: 5px;
+	text-align: center;
+	width: 130px;
+	height: 275px;
+	float:left;
+	border: 1px solid #EEEEEE;
+	padding: 5px 0 5px 0;
+}
+div.photo{
+	width: 130px;
+	height: 190px;
+}
+div.photo img{
+	padding: 1px;
+	border: 1px solid #ccc;
+}
+p#breaker{
+	clear:both;
+}
+div#side_panel ul{
+	margin: 0px;
+	padding: 0px;
+}
+div#side_panel ul li{
+	list-style: none;
+}
+
+input.quantity{
+	border: 1px solid #999;
+}
+input, select{
+	padding: 3px;
+}
+
+.pagination {
+  padding: 3px 0px;
+}
+
+.pagination a {
+  background-color: #EAEAEA;
+  border: 1px solid #E4E2E2;
+  color: #505050;
+  display: inline-block;
+  margin: 4px 0px;
+  padding: 6px;
+}
+
+.pagination a:hover {
+  background-color: #084E7E;
+  border: 1px solid #064570;
+  color: #FFF;
+}
+
+.pagination em {
+  font-weight: bold;
+  padding: 6px;
+}
+
+.pagination .previous_page.disabled {
+  display: none;
+}
+
+.pagination .next_page.disabled {
+  display: none;
+}
+
+div.cart_items{
+  margin: 0 0 10px 10px; 
+  float:left;
+}

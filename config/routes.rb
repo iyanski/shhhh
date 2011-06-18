@@ -67,14 +67,13 @@ Drewaltizer::Application.routes.draw do
   resources :albums
   resources :archives
   resources :videos
-  resources :home do
-    collection do
-      get 'about'
-      get 'contact'
-      get 'terms'
-      get 'privacy'
-    end
-  end
+
+  match "terms", :controller => "home", :action => "terms"
+  match "privacy", :controller => "home", :action => "privacy"
+  match "about", :controller => "home", :action => "about"
+  match "contact", :controller => "home", :action => "contact"
+  match "faqs", :controller => "home", :action => "faqs"
+  match "refunds", :controller => "home", :action => "refunds"
   root :to => "events#index"
   # See how all your routes lay out with "rake routes"
 

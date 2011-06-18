@@ -14,4 +14,8 @@ class HomeController < ApplicationController
   def contact
     @page_title = "Contact Us"
   end
+  
+  def faqs
+    @page_title = "Frequently Asked Questions"
+  end
 end
