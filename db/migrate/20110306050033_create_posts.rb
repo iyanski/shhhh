@@ -11,6 +11,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer     :is_featured, :default => 0, :limit => 1
       t.integer     :is_active, :default => 1, :limit => 1
       t.integer     :booking_id
+      t.string      :passcode
       t.timestamps
       t.timestamps
     end

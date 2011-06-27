@@ -65,7 +65,7 @@ a:active {
 }
 #davheader {
 	height: 139px;
-	background-image: url(../images/gui/bg_head.jpg);
+	background-image: url(../images/bg_head.jpg);
 	background-position: right top;
 	background-repeat: no-repeat;
 	padding-bottom: 20px;
@@ -73,7 +73,7 @@ a:active {
 #davfooter {
 	height:45px;
 	margin:auto;
-	background-image: url(../images/gui/bgfooter.gif);
+	background-image: url(../images/bgfooter.gif);
 	background-repeat: no-repeat;
 	background-position: right top;
 	width: 760px;
@@ -90,7 +90,7 @@ a:active {
 	margin-left: 20px;
 	display: inline;
 	font-size:0;
-	background:url(../images/gui/drew_logo.gif) no-repeat;
+	background:url(../images/drew_logo.gif) no-repeat;
 }
 #drew_logo h1{
 	height: 139px;
@@ -106,7 +106,7 @@ a:active {
 }
 
 #head_number {
-	background:url(../images/gui/title_contact.gif) no-repeat;
+	background:url(../images/title_contact.gif) no-repeat;
 	width:138px;
 	height:55px;
 }
@@ -133,7 +133,7 @@ a:active {
 	line-height: 25px;
 }
 #mn1 {
-	background-image: url(../images/gui/nav_events.gif);
+	background-image: url(../images/nav_events.gif);
 	background-repeat: no-repeat;
 	background-position: left top;
 	display: block;
@@ -144,7 +144,7 @@ a:active {
 	text-align: center;
 }
 #mn2 {
-	background-image: url(../images/gui/nav_archives.gif);
+	background-image: url(../images/nav_archives.gif);
 	background-repeat: no-repeat;
 	background-position: left top;
 	display: block;
@@ -155,7 +155,7 @@ a:active {
 	text-align: center;
 }
 #mn3 {
-	background-image: url(../images/gui/nav_contact.gif);
+	background-image: url(../images/nav_contact.gif);
 	background-repeat: no-repeat;
 	background-position: left top;
 	display: block;
@@ -166,7 +166,7 @@ a:active {
 	text-align: center;
 }
 #mn4 {
-	background-image: url(../images/gui/nav_about.gif);
+	background-image: url(../images/nav_about.gif);
 	background-repeat: no-repeat;
 	background-position: left top;
 	display: block;
@@ -177,7 +177,7 @@ a:active {
 	text-align: center;
 }
 #mn5 {
-	background-image: url(../images/gui/nav_videos.gif);
+	background-image: url(../images/nav_videos.gif);
 	background-repeat: no-repeat;
 	background-position: left top;
 	display: block;
@@ -220,7 +220,7 @@ a:active {
 }
 #navigation {
 	line-height: 28px;
-	background-image: url(../images/gui/bg_navbar.gif);
+	background-image: url(../images/bg_navbar.gif);
 	background-repeat: no-repeat;
 	background-position: left top;
 	height: 31px;
@@ -335,7 +335,7 @@ a:active {
 	margin-right: 5px;
 }
 #myadvancedsearch {
-	background-image: url(../images/gui/bg_advancedsearch.gif);
+	background-image: url(../images/bg_advancedsearch.gif);
 	background-repeat: no-repeat;
 	background-position: left top;
 	margin: 0px;
@@ -388,7 +388,7 @@ a:active {
 	border-top-style: solid;
 	border-top-color: #C3C3C3;
 }
-#cartitems {
+.cart_items_count {
 	float: left;
 	margin-right: 5px;
 	margin-left: 10px;
@@ -483,7 +483,7 @@ a:active {
 	margin-left: 4px;
 	margin-bottom: 2px;
 	background-color: #efefef;
-	background-image: url(../images/gui/bg_thumbnail.gif);
+	background-image: url(../images/bg_thumbnail.gif);
 	border:1px solid #eeeeee;
 }
 .photopanels .details {
@@ -518,7 +518,7 @@ a:active {
 	width: 60px;
 	float: left;
 	display: inline;
-	background-image: url(../images/gui/bg_thumbnail.gif);
+	background-image: url(../images/bg_thumbnail.gif);
 	overflow: hidden;
 	margin-left: 5px;
 	margin-top: 5px;
@@ -590,7 +590,7 @@ a:active {
 	height: 70px;
 	width: 70px;
 	background-color: #EEEEEE;
-	background-image: url(../images/gui/bg_thumbnail.gif);
+	background-image: url(../images/bg_thumbnail.gif);
 	overflow:hidden;
 }
 .mytitle {
@@ -614,7 +614,7 @@ a:active {
 	display: inline;
 	background-color: #cccccc;
 	text-align: center;
-	background-image: url(../images/gui/bg_thumbnail.gif);
+	background-image: url(../images/bg_thumbnail.gif);
 	border: 1px solid #eeeeee;
 	margin-top: 5px;
 	margin-right: 0px;
@@ -665,7 +665,7 @@ a:active {
 }
 
 .formfields {
-	background-image: url(../images/gui/bg_forms.gif);
+	background-image: url(../images/bg_forms.gif);
 	background-repeat: repeat-x;
 	padding-top: 5px;
 	padding-right: 10px;
@@ -826,7 +826,7 @@ a:active {
 	
 	width: 58px;
 	border: 1px solid #eeeeee;
-	background-image: url(../images/gui/bg_thumbnail.gif);
+	background-image: url(../images/bg_thumbnail.gif);
 	line-height: 58px;
 	text-align: center;
 	margin-top: 5px;
@@ -1019,3 +1019,7 @@ div#Forms a.img {
 .left { margin:0px 15px 0px 0px; }
 
 #banner {width:600px; height:53px; background:url(../images/live-banner.jpg) no-repeat;}
+
+#mycart img{
+	float: left;
+}

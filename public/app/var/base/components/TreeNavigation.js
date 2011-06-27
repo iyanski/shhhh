@@ -68,6 +68,24 @@ Extriajs.base.components.TreeNavigation = Ext.extend(Ext.tree.TreePanel,{
 		});
 		container.setActiveTab(tab);
 		if(id) tab.loadData(id);
+	},
+	
+	loadAlbumBrowser: function(post_id){
+		app.manager().setActiveItem(1);
+		var container = app.manager().activeItem;
+		var tab = container.findById('album_browser_' + post_id);
+
+		if(!tab) var tab = container.add({
+			title: 'Albums',
+			xtype: 'extria-album-view',
+			id: 'album_browser_' + post_id,
+			post_id: post_id,
+			closable: true,
+			manager: this
+		});
+
+		container.setActiveTab(tab);
+		//tab.getStore().load();
 	}
 });
 Ext.reg('extria-treenav', Extriajs.base.components.TreeNavigation);

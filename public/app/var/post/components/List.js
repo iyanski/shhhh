@@ -15,9 +15,9 @@ Extriajs.post.List = Ext.extend(Ext.grid.GridPanel,{
 			sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
             columns: [
 				{id: 'id', header: 'ID', width: 50, sortable: false, dataIndex: 'id'},
-				{id: 'title', header: 'Title', sortable: true, dataIndex: 'name'},
+				{id: 'title', header: 'Title', width: 200, sortable: true, dataIndex: 'name'},
 				{id: 'event_date', header: 'Event Date', width: 200, sortable: false, dataIndex: 'event_date'},
-				{id: 'is_public', header: 'Public', width: 200, sortable: false, dataIndex: 'is_public'},
+				{id: 'is_public', header: 'Public', width: 40, sortable: false, dataIndex: 'is_public'},
 				{id: 'created_at', header: 'Created', width: 200, sortable: false, dataIndex: 'created_at'}
             ],
 			tbar: [{
@@ -52,14 +52,14 @@ Extriajs.post.List = Ext.extend(Ext.grid.GridPanel,{
 						text: 'Synchronize',
 						listeners: {
 							click: function(){
-								me._synchEvent();
+								me._synchEvent(me.getSelectionModel().getSelected().id);
 							}
 						}
 					},{
 						text: 'Watermark',
 						listeners: {
 							click: function(){
-								me._watermarkEvent();
+								me._watermarkEvent(me.getSelectionModel().getSelected().id);
 							}
 						}
 					},{
@@ -120,6 +120,11 @@ Extriajs.post.List = Ext.extend(Ext.grid.GridPanel,{
 					}
 				}]
 			}),
+			listeners:{
+				rowdblclick: function(component){
+					me.manager.loadAlbumBrowser(me.sm.getSelected().id);
+				}
+			},
 			bbar: {
               xtype:'paging',
               pageSize: 2,
@@ -133,6 +138,7 @@ Extriajs.post.List = Ext.extend(Ext.grid.GridPanel,{
 		Ext.apply(this, Ext.applyIf(this.initialConfig, config));
 		Extriajs.post.List.superclass.initComponent.apply(this);
 		this.manager = this.initialConfig.manager;
+		this.sm = this.getSelectionModel();
 	},
 	
 	_deleteEvent: function(id){
@@ -140,6 +146,38 @@ Extriajs.post.List = Ext.extend(Ext.grid.GridPanel,{
 		Extriajs.tools.ajax.normalizedJson({
             url: '/api/events/' + id,
             method: 'delete',
+            scope: this,
+            success: function (json) {
+				me.getStore().reload();
+                Extriajs.tools.Msg.alert(json.message);
+            },
+            failure: function (json) {
+                Extriajs.tools.Msg.alert(json.message);
+            }
+        }, this);
+	},
+	
+	_watermarkEvent: function(id){
+		var me = this;
+		Extriajs.tools.ajax.normalizedJson({
+            url: '/api/events/' + id + '/watermark.json',
+            method: 'post',
+            scope: this,
+            success: function (json) {
+				me.getStore().reload();
+                Extriajs.tools.Msg.alert(json.message);
+            },
+            failure: function (json) {
+                Extriajs.tools.Msg.alert(json.message);
+            }
+        }, this);
+	},
+	
+	_synchEvent: function(id){
+		var me = this;
+		Extriajs.tools.ajax.normalizedJson({
+            url: '/api/events/' + id + '/synchronize.json',
+            method: 'post',
             scope: this,
             success: function (json) {
 				me.getStore().reload();

@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   end
   
   def create
-    @favorite = Favorite.new(params[:favorite])
+    @favorite = current_customer.favorites.new(params[:favorite])
     @favorite.save!
     redirect_to :back
   end

@@ -19,6 +19,8 @@ Drewaltizer::Application.routes.draw do
         post :list
         get :buckets
         post :buckets
+      end
+      member do
         post :synchronize
         post :watermark
       end

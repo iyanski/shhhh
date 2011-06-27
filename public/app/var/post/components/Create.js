@@ -73,7 +73,11 @@ Extriajs.posts.components.Updater = Ext.extend(Ext.FormPanel,{
 				triggerAction: 'all',
 			    forceSelection: true,
 			    emptyText:'Public?'
-			}),
+			}),{
+				xtype: 'textfield',
+				fieldLabel: 'Passcode',
+				name: namer('passcode')
+			},
 			new Ext.form.ComboBox({
 				fieldLabel: 'Featured',
 				name: namer('is_featured'),

@@ -71,27 +71,18 @@ class Api::EventsController < ApiController
     if operation.save
       Resque.enqueue(Synchronize, operation.id)
     end
-    respond_to do |format|
-      format.json {ext :success => true, :message => post.name}
-    end
+    ext :success => true, :message => "Synchronizing #{post.name}"
   end
   
   def watermark
     post = Post.find_by_id(params[:id])
-    
     post.photos.each do |photo|
-      operation = Operation.new
-      operation.ref_id = photo.id
-      operation.action = "watermark"
+      operation = Operation.new(:ref_id => photo.id, :action => "watermark")
       if operation.save!
         Resque.enqueue(Watermark, operation.id)
       end
     end
-    
-    respond_to do |format|
-      format.json {ext :success => true, :message => post.folder}
-      ext :success => true, :message => post.folder
-    end
+    ext :success => true, :message => "Watermarking #{post.folder}"
   end
   
   def destroy

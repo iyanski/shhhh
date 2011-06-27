@@ -27,9 +27,8 @@
     	<div class="thumbnail">
 			<div id="create-user" class="options">
 				<a title="<%= event.name%>" href="/event.php?event_id=2572">
-					<img width="130" height="130" border="0" alt="<%= event.name%>" src="get_thumb.php?type=event&amp;id=1308293806_0000-Nordstrom-Jason-Wu-110616.jpg&amp;thumb=2">
-					<%# = link_to image_tag("/photos/thumb1/#{event.photos.first.id}.jpg", :border => 0), :controller => (event.id == 1 ? "albums" : "events"), :action => "show", :id => (event.id == 1 ? 1 : event) %>
-				</a>
+				<%= link_to image_tag("missing.png"), event_path(event)%>
+				<%# = link_to image_tag("/photos/thumb1/#{event.photos.first.id}.jpg", :border => 0), :controller => (event.id == 1 ? "albums" : "events"), :action => "show", :id => (event.id == 1 ? 1 : event) %>
 			</div>
 		</div>
     	<div class="details"><strong><%= event.name%></strong></div>

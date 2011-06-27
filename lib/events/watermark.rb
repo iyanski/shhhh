@@ -30,6 +30,18 @@ class Watermark
         end
         height = photo[:height] / (photo[:width] / widths[thumb.to_sym])
         output.resize "#{widths[thumb.to_sym]}x#{height}"
+        
+      elsif (thumb == "thumb1")
+        
+        height = photo[:height] / (photo[:width] / widths[thumb.to_sym])
+        
+        if(widths[thumb.to_sym] > height)
+          photo.resize "#{widths[thumb.to_sym]}x#{height}"
+        else
+          photo.resize "90x134"
+        end
+        output = photo
+        
       else
         height = photo[:height] / (photo[:width] / widths[thumb.to_sym])
         photo.resize "#{widths[thumb.to_sym]}x#{height}"

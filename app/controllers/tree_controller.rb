@@ -1,7 +1,6 @@
 class TreeController < ApplicationController
   
   def create
-    Rails.logger.info(params[:node].inspect)
     if params[:node] == 'src'
       render :json => '[{"id":"1","text":"Events","cls":"folder"},{"id":"2","text":"Users","cls":"folder"},{"id":"3","text":"Distribution","cls":"folder"},{"id":"4","text":"Reports","cls":"folder"},{"id":"5","text":"Promotions","cls":"folder"}]'
     elsif params[:node] == "1"

@@ -223,6 +223,7 @@ ActiveRecord::Schema.define(:version => 20110330034641) do
     t.integer  "is_featured",     :limit => 1, :default => 0
     t.integer  "is_active",       :limit => 1, :default => 1
     t.integer  "booking_id"
+    t.string   "passcode"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

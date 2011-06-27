@@ -1,9 +1,48 @@
-<h1><%= @page_title %></h1>
-<% @albums.each do |album| %>
-	<div class="thumbnails">
-		<%= link_to image_tag("/photos/thumb1/#{album.photos.last.id}.jpeg", :border => 0) , album_path %>
-		<p><strong><%= album.name%></strong></p>
-		<p><%= album.created_at.strftime("%d %B %Y")%></p>
-		<span style="color: #5F92AF;"><%= album.photos.count%> Photos</span>
+<h1 id="eventtitle"><%= @post.name %></h1>
+<div class="eventlist">
+	<div class="liner"></div>
+	<div style="border: 1px solid rgb(238, 238, 238); background: url("/images/bg_thumbnail.gif") repeat scroll left top transparent; width: 50px; height: 50px; float: left; display: inline; text-align: center;"><a href="event.php?event_id=2573"><img width="50" height="50" border="0" alt="" src="get_thumb.php?type=event&amp;thumb=0&amp;id=1308313791_0000-Gumps-110616.jpg"></a></div>
+	<div style="width: 540px; float: left; display: inline; margin-left: 10px;">
+    	<div class="details">
+        	<div class="detailstxt">Event Date: <%= @post.event_date.strftime "%d %B %Y" %></div>
+        	<div class="detailstxt">Total Albums: <%= @post.albums.count %></div>
+			<div class="eventdetailstxt" style="float: right; line-height: 16px; margin-bottom: 10px;">
+				<a href="/events">
+					<img border="0" align="left" src="/images/back.gif" alt="Back to eventd">&nbsp; Back to Events
+				</a>
+			</div>
+		</div>
 	</div>
-<% end %>
+	<div class="breaker"></div>
+	<div id="gallerylist">
+		<form action="event_search.php" method="post">
+			<div style="float: left; width: 470px; line-height: 20px;">
+				<div style="float:left;">Search name:</div> 
+				<input type="hidden" value="<%= @post.id %>" name="event_id"/> 
+				<input type="text" name="searchkey" style="float:left;line-height: 20px;"/> 
+				<input type="submit" value="Search" style="float:left;line-height: 20px;"/>
+			</div>
+		</form>
+		<div class="breaker"></div>
+		<% @albums.each do |album| %>
+			<div class="photopanels">
+				
+				<p><strong></strong></p>
+				<p></p>
+				<span style="color: #5F92AF;"> Photos</span>
+				
+				<div class="thumbnail"><%# = link_to image_tag("/photos/thumb1/#{album.photos.last.id}.jpeg", :border => 0) , album_path(album), :title => album.name %></div>
+	    		<div class="details"><strong><%= album.name%></strong></div>
+	    		<div class="date"><%= album.created_at.strftime "%d %B %Y" %></div>
+	    		<div class="options"><%= link_to "#{album.photos.count} photos", album_path(album), :title => album.name %></div>
+			</div>
+		<% end %>
+		<div style="float: right; clear: both;">
+			<!-- AddThis Button BEGIN -->
+			<a href="http://www.addthis.com/bookmark.php?v=250&amp;pub=xa-4a9764283f33e905" class="addthis_button"><img width="125" height="16" style="border: 0pt none;" alt="Bookmark and Share" src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif"></a><script src="http://s7.addthis.com/js/250/addthis_widget.js?pub=xa-4a9764283f33e905" type="text/javascript"></script>
+			<!-- AddThis Button END -->
+			</div>
+			<div class="breaker"></div>	
+		</div>
+	</div>
+</div>

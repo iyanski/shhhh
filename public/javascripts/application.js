@@ -52,7 +52,7 @@ function clickIE4(){
 }
 
 function clickNS4(e){
-	if (document.layers||document.getElementById&amp;&amp;!document.all){
+	if (document.layers||document.getElementById && !document.all){
 		if (e.which==2||e.which==3){
 			alert("Copyright 2009 Drew Altizer");
 			return false;
@@ -64,7 +64,7 @@ if (document.layers){
 	document.captureEvents(Event.MOUSEDOWN);
 	document.onmousedown=clickNS4;
 }
-else if (document.all&amp;&amp;!document.getElementById){
+else if (document.all && !document.getElementById){
 	document.onmousedown=clickIE4;
 }
 

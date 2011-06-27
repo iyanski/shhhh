@@ -1,22 +1,41 @@
 <h1 style="float:left"><%= @page_title %></h1>
 <div style="float:right"><%= will_paginate @photos %></div>
-<p id="breaker"></p>
+<div class="breaker">&nbsp;</div>
+<div>
 <% @photos.each do |photo| %>
-	<div class="thumbnails">
-		<div class="photo"><%= link_to image_tag("/photos/thumb1/#{photo.id}.jpeg") , "/photos/thumb2/#{photo.id}.jpg", :rel => "photos" %></div>
-		<!--
-		<p><%= link_to "Download", "/photos/download/#{photo.id}.jpg", :rel => "Full Res Photo", :target => "_download" %></p>
-		<p><strong><%= photo.caption%></strong></p>
-		-->
-		<div>
-			<%= link_to image_tag("/images/icons/favorites.png", :width=> 16, :height=>16, :item_id => photo.id, :border=>0, :class => "add_to_favorites"), "javascript:void()" %>
-			<%= link_to image_tag("/images/icons/facebook.png", :rel => "photos", :width=> 16, :height=>16, :border=>0), "#" %>
-			<%= link_to image_tag("/images/icons/download.gif", :rel => "photos", :width=> 16, :item_id => photo.id, :height=>16, :border=>0), "/photos/download/#{photo.id}.jpg", :target => "_download" %>
-			<%= link_to image_tag("/images/icons/cart.gif", :width=> 16, :height=>16, :border=>0, :item_id => photo.id, :class => "add_to_cart"), "/cart/add_item/#{photo.id}", 'data-remote' => true, :method => 'post'%>
+    <div style="overflow:hidden;" class="photopanels">
+	    <div class="thumbnail">
+	        <%= link_to image_tag("/photos/thumb1/#{photo.id}.jpeg", :alt => photo.caption), "/photos/thumb2/#{photo.id}.jpeg", :onclick => "return hs.expand(this)"%>
+	        <div class="highslide-caption"> 
+	          	<div style="float:right;padding-bottom:10px;font-size:11px;" id="cart_1406335">
+	            	<a>Add to Favorites</a>&nbsp;|&nbsp;
+					<a>Share on Facebook</a>&nbsp;|&nbsp;
+					<a>Add to Cart</a>&nbsp;|&nbsp; 
+					<a>Download</a>
+	            </div></br>
+				<span style="font-size:10px"><%= photo.file_name %></span>
+	        </div>
+	    </div>
+	    <div style="text-align:center; color:#ff0000; margin-bottom:5px; height:23px;"></div>
+	    <div class="details" style="height:80px;margin:0px; padding:0px;" id="panel1">
+			</br>
+	        <strong><%= photo.file_name %></strong>
+	        </br>
+			<div>
+				</br>
+				<%= link_to image_tag("/images/fav-16x16.gif", :title => "Add to favorites", :border => 0)%>
+				<%= link_to image_tag("/images/fb-16x16.png", :title => "Share on facebook", :border => 0)%>
+			</div>
+	        <div style="margin:0px; padding:0px;" class="notice_box" id="notice_box_1406335"></div>
+	    </div>
+	    <div style="margin:0px; padding:0px;" class="options">
+			<a>Add to Cart</a> &nbsp;|&nbsp; 
+			<a>Download</a>
 		</div>
 	</div>
 <% end unless @photos.nil? %>
-<p id="breaker"></p>
+</div>
+<div class="breaker"></div>
 <div style="float:right"><%= will_paginate @photos %></div>
 <script>
 	jQuery(function(){
